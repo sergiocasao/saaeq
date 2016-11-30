@@ -1,0 +1,176 @@
+/* DAVID LIBRE PARA TITULOS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;	
+	vertical-align: baseline;
+}
+body
+{
+	font-family: 'Old Standard TT', serif;
+	background-color: #F1F4F5; 
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;	
+}
+hr
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #359FD1;
+}
+.button
+{
+	background: #7dcd40;
+	box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .2);
+    font-size: 18px;
+	padding: 10px 15px 15px;
+    border-radius: 6px;
+	text-decoration: none;
+    color: white;
+    transition: .1s;
+}
+	.button:active 
+	{
+  		transform: scale(.9);
+	}
+.header
+{
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-family: 'David Libre', serif;
+	background-color: #273B47;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.header img
+{
+	margin: 10px 0;
+}
+.main-container
+{
+	display: flex;
+	flex: 1;
+	/*background-color: green;*/
+}
+.menbi
+{
+	width: 65%;
+	background-color: #BCBCBC;
+	font-size: 1.2em;
+	font-family: 'Old Standard TT', serif;	
+	padding: 20px 25px;
+	margin: 2.5% 3%;
+	border-radius: 10px;
+	text-align: center;
+}
+	.menbi span
+	{
+		font-weight: bold;
+		font-size: 1.3em;
+	}
+	.menbi p
+	{
+		text-align: left;
+		margin-top: 30px;
+	}
+.registro
+{
+	width: 25%;
+	background-color: #BCBCBC;
+	font-size: 1.2em;
+	font-family: 'Old Standard TT', serif;
+	padding: 15px 15px;
+	margin: 2.5% 3%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+	.registro-seccion
+	{
+		/*background: red;*/
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.registro-seccion a
+	{
+		margin-top: 10px;
+	}
+	.registro-seccion span
+	{
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+	.registro-temario
+	{
+		/*background: blue;*/
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px 15px;
+	}
+	.registro-temario a
+	{
+		margin-top: 10px;
+	}
+	/*.registro-mensaje
+	{
+		padding-top: 0%;
+	}
+		.registro-title
+		{
+			font-size: 1.35em;
+			font-weight: bold;
+		}*/
+	/*.registro-btn
+	{
+		padding: 7% 30%;
+	}*/
+
+
+.footer
+{
+	color: white;
+	padding: .5% 0;
+	/*clear: both;*/
+	font-family: 'EB Garamond', serif;
+	background-color: #273B47;
+	text-align: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+	.footer span
+	{
+		/*font-family: 'Kaushan Script', cursive;*/
+		/*font-family: 'Montez', cursive;*/
+		font-family: 'Rochester', cursive;
+	}
+
+
+
+
+
+/*font-family: 'Oxygen', sans-serif; */
+	 /*font-family: 'Cabin', sans-serif; */
+	/* font-family: 'Crimson Text', serif; */
+	/* font-family: 'Quicksand', sans-serif; */
+	/* font-family: 'Shadows Into Light', cursive; */
+	/* font-family: 'Vollkorn', serif; */

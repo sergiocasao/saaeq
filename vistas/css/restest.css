@@ -1,0 +1,146 @@
+/* DAVID LIBRE PARA TITULOS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;	
+	vertical-align: baseline;
+}
+body
+{
+	font-family: 'Old Standard TT', serif;
+	background-color: #F1F4F5; 
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;	
+}
+hr
+{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #359FD1;
+}
+form
+{
+	display: flex;
+	flex-direction: column;
+}
+form span
+{
+	font-size: 20px;
+	margin-top: 25px;
+}
+.button
+{
+	background: #7dcd40;
+	box-shadow: inset 0 -5px 0 rgba(0, 0, 0, .2);
+    font-size: 18px;
+	padding: 10px 15px 15px;
+    border-radius: 6px;
+	text-decoration: none;
+    color: white;
+    transition: .1s;
+}
+	.button:active 
+	{
+  		transform: scale(.9);
+	}
+.header
+{
+	width: 100%;
+	color: white;
+	text-align: center;
+	font-family: 'David Libre', serif;
+	background-color: #273B47;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.header a
+{
+	margin-right: 7%;
+}
+.main-container
+{
+	display: flex;
+	flex: 1;
+}
+.resultados-container
+{
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 3%;
+	margin-bottom: 3%;
+	/*border: 2px solid red;*/
+	border-radius: 10px;
+	background: #BCBCBC;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+	.resultados-container h2
+	{
+		margin-top: 3%;
+	}
+.info
+{
+	margin: 5% 5%;
+	text-align: left;
+}
+.situar
+{
+	width: 30%;
+	margin-left: 35%;
+	margin-bottom: 3%;
+}
+
+.footer
+{
+	color: white;
+	padding: .5% 0;
+	font-family: 'EB Garamond', serif;
+	background-color: #273B47;
+	text-align: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+	.footer span
+	{
+		font-family: 'Rochester', cursive;
+	}
+
+
+
+
+
+/*<form action="foo.php" method="post">
+	<label for="resp1">
+    	<input type="radio" id="resp1" name="r1" value="respuesta1" />Ricardo
+	</label>
+	<label for="resp2">
+    	<input type="radio" id="resp2" name="r1" value="respuesta2" />Moreno
+	</label>
+    <input type="submit" name="submit" value="Submit me!" />*/
+
+
+
+
+
+/*font-family: 'Oxygen', sans-serif; */
+	 /*font-family: 'Cabin', sans-serif; */
+	/* font-family: 'Crimson Text', serif; */
+	/* font-family: 'Quicksand', sans-serif; */
+	/* font-family: 'Shadows Into Light', cursive; */
+	/* font-family: 'Vollkorn', serif; */
