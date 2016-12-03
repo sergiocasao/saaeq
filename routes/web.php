@@ -11,10 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+// Route::group(['prefix' => 'register/success', 'as' => 'register.success.' ], function(){
+//
+//     Route::get('{user_email}', 'Client\ActivateAccountController@showMessageSent')->name('showMessageSent');
+//
+//     Route::post('{user_email}/activate', 'Client\ActivateAccountController@activateAccount')->name('activateAccount');
+//
+//     Route::post('{user_email}/resend', 'Client\ActivateAccountController@resendActivateAccountMail')->name('resendActivateAccountMail');
+//
+// });
+//
+// Route::group(['middleware' => 'authactive' ], function(){
+//
+//     Route::get('/', 'Client\ClientController@index')->name('index');
+//
+// });

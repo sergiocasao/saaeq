@@ -14,6 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        'App\Console\Cltvo\CltvoSetMakeCommand',
+        'App\Console\Cltvo\CltvoSetSiteCommand',
+        'App\Console\Cltvo\CLtvoBindMakeCommand',
     ];
 
     /**

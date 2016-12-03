@@ -17,6 +17,15 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
+     * Lists of blind clases
+     * @var array
+     */
+    protected $bind_classes = [
+        'App\Http\Binds\ManageUserBind',
+        'App\Http\Binds\ManagePhotosBind',
+    ];
+
+    /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @return void
@@ -26,6 +35,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        $this->runBindMethods();
     }
 
     /**
@@ -38,6 +48,10 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+
+        $this->mapUserRoutes();
+
+        $this->mapAdminRoutes();
 
         //
     }
@@ -54,8 +68,45 @@ class RouteServiceProvider extends ServiceProvider
         Route::group([
             'middleware' => 'web',
             'namespace' => $this->namespace,
+            'as' => 'client::'
         ], function ($router) {
             require base_path('routes/web.php');
+        });
+    }
+
+    /**
+     * These routes are typically user page.
+     *
+     * @return void
+     */
+    protected function mapUserRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'auth', 'user', 'authactive'],
+            'namespace' => $this->namespace,
+            'prefix' => 'user',
+            'as' => 'user::'
+        ], function ($router) {
+            require base_path('routes/user.php');
+        });
+    }
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes are typically dashboard.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => ["web",'admin'],
+            'namespace' => $this->namespace,
+            'prefix' => 'admin',
+            'as' => 'admin::'
+        ], function ($router) {
+            require base_path('routes/admin.php');
         });
     }
 
@@ -75,5 +126,15 @@ class RouteServiceProvider extends ServiceProvider
         ], function ($router) {
             require base_path('routes/api.php');
         });
+    }
+
+    /**
+     * run bind method of the registred bind class
+     */
+    protected function runBindMethods()
+    {
+        foreach ($this->bind_classes as $bind_class) {
+            $bind_class::Bind();
+        }
     }
 }
