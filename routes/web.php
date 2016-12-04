@@ -11,21 +11,22 @@
 |
 */
 
+Route::get('/', 'Client\ClientController@index')->name('index');
 
 Auth::routes();
 
-// Route::group(['prefix' => 'register/success', 'as' => 'register.success.' ], function(){
-//
-//     Route::get('{user_email}', 'Client\ActivateAccountController@showMessageSent')->name('showMessageSent');
-//
-//     Route::post('{user_email}/activate', 'Client\ActivateAccountController@activateAccount')->name('activateAccount');
-//
-//     Route::post('{user_email}/resend', 'Client\ActivateAccountController@resendActivateAccountMail')->name('resendActivateAccountMail');
-//
-// });
-//
-// Route::group(['middleware' => 'authactive' ], function(){
-//
-//     Route::get('/', 'Client\ClientController@index')->name('index');
-//
-// });
+Route::group(['prefix' => 'register', 'as' => 'register.' ], function(){
+
+    Route::get('success/{user_email}', 'Client\ActivateAccountController@showActivationMessage')->name('success.showActivationMessage');
+
+    Route::get('activate/{user_email}', 'Client\ActivateAccountController@activateAccount')->name('activateAccount');
+
+    Route::post('resend/{user_email}', 'Client\ActivateAccountController@resendActivateAccountMail')->name('resendActivateAccountMail');
+
+});
+
+Route::group(['middleware' => 'authactive'], function(){
+
+    Route::get('/home', 'Client\ClientController@home')->name('home');
+
+});

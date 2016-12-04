@@ -22,7 +22,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'slug' => str_slug($name),
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
-        'verified' => true,
+        'active' => true,
         'remember_token' => str_random(10),
     ];
 });

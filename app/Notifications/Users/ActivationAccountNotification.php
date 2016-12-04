@@ -46,11 +46,11 @@ class ActivationAccountNotification extends Notification
         return (new MailMessage)
                     ->from( 'no-reply@saaeq.com', env('APP_NAME') )
                     ->success()
-                    ->subject('Activa tu cuenta de '. env('APP_NAME'))
-                    ->greeting( 'Hola '.$notifiable->name.'!' )
-                    ->line( 'Ahora que ya estás registrado en SAAEQ solo falta activar tu cuenta.' )
-                    ->action( 'Activar mi cuenta', $notifiable->getActivationAcountUrl() )
-                    ->line( 'Ingresa este código: '.$notifiable->activation_code.' y listo.' );
+                    ->subject('Activa Tu Cuenta '. env('APP_NAME'))
+                    ->greeting( 'Nos da gusto que estés aquí, '.explode(' ', trim($notifiable->name) )[0] )
+                    ->line( 'Activa tu cuenta.' )
+                    ->action( 'Activar mi cuenta', $notifiable->getMailActivationAcountUrl() )
+                    ->line( '(Solo para confirmar sí tu eres tú)');
     }
 
     /**

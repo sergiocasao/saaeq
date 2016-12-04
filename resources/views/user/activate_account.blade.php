@@ -3,63 +3,52 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Activa tu cuenta</div>
-                <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('client::activateAccount', cltvoMailEncode($user->email)) }}">
+        <br>
 
-                        {{ csrf_field() }}
+        <div class="col-md-4 col-md-offset-1 text-center" style="padding: 2em;">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} text-center">
+            <img src="https://thecliparts.com/wp-content/uploads/2016/07/check-mark-clip-art-6.png" class="img-responsive" style="max-width: 260px;" alt="Responsive image">
 
-                            <h3>
-                                Código para activar tu cuenta <br>
-                                <small>Mandamos un código a tu correo ({{$user->email}}), ingresalo aquí para activar tu cuenta</small>
-                            </h3>
+        </div>
 
-                            <br>
+        <div class="col-md-6">
 
-                            <div class="col-md-6 col-md-offset-3">
-                                <input id="code" type="text" class="form-control text-center" name="code" value="{{ $activation_code or '' }}" required autofocus>
-
-                                @if ($errors->has('code'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('code') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-12">
-
-                                <br>
-
-                                <button type="submit" class="btn btn-primary center-block">
-                                    Activar cuenta
-                                </button>
-
-                            </div>
-                        </div>
-
-                    </form>
-
-                    <form class="text-center" action="{{ route('client::resendActivateAccountCode', cltvoMailEncode($user->email)) }}" method="post">
-
-                        {{ csrf_field() }}
-
-                        <br> <span>¿No te llegó el código?</span> <br>
-                        <button type="submit" class="btn btn-link">
-                            Reenviar nuevo código
-                        </button>
-
-                    </form>
-
-
+            @if (session('status'))
+                <div class="alert alert-info" role="alert">
+                    {{ session('status') }}
                 </div>
+            @endif
+
+            @if (isset($errors) && $errors->count() > 0)
+                <div class="alert alert-warning" role="alert">
+                    @foreach ($errors->all() as $error)
+    					{{ $error }} <br>
+    				@endforeach
+                </div>
+            @endif
+
+            <div class="form-group">
+
+                <h2>
+                    Revisa tu correo electrónico! <br><br>
+                    <small>Hemos enviado un correo a {{$user->email}}. Ábrelo y da click en el botón Activa tu cuenta, nosotros haremos los demás.</small>
+                </h2>
+
+                <form class="text-center" action="{{ route('client::register.resendActivateAccountMail', cltvoMailEncode($user->email)) }}" method="post">
+
+                    {{ csrf_field() }}
+
+                    <br><br><span>¿No te llegó el correo?</span><br>
+
+                    <button type="submit" class="btn btn-link">
+                        Reenviar correo
+                    </button>
+
+                </form>
+
             </div>
+
         </div>
     </div>
 </div>

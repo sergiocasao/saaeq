@@ -15,13 +15,13 @@
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
-            'csrfToken' => csrf_token(),
-        ]); ?>
+        window.Laravel = @php echo json_encode([ 'csrfToken' => csrf_token(), ]); @endphp
     </script>
 </head>
-<body>
+<body style="background-color: white;">
+
     <div id="app">
+
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -79,9 +79,25 @@
         </nav>
 
         @yield('content')
+
+        <div class="container-fluid" style="position: absolute; bottom: 0;width: 100%;">
+            <div class="row">
+                <hr>
+                <div class="col-lg-12">
+                    <div class="col-md-8">
+                        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="muted pull-right">© {{ date('Y') }} {{ config('app.name') }}. All rights reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+
 </body>
 </html>

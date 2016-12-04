@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('slug');
 
-            $table->boolean('verified')->default(false);
+            $table->boolean('active')->default(false);
             $table->string('token')->nullable();
 
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -13,6 +13,6 @@
 
 Route::group([ 'prefix' => '{user}' ], function(){
 
-    Route::get('/', 'User\UserController@index')->name('home');
+    Route::get('/', 'User\UserController@home')->name('home');
 
 });

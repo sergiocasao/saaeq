@@ -11,25 +11,6 @@ use Illuminate\Http\Request;
 
 class RedirectIfNotActive
 {
-
-    /**
-     * The Guard implementation.
-     *
-     * @var Guard
-     */
-    protected $auth;
-
-    /**
-     * Create a new filter instance.
-     *
-     * @param  Guard  $auth
-     * @return void
-     */
-    public function __construct(Guard $auth)
-    {
-        $this->auth = $auth;
-    }
-
     /**
      * Handle an incoming request.
      *
@@ -40,10 +21,18 @@ class RedirectIfNotActive
      */
     public function handle($request, Closure $next)
     {
-        $current_user = $this->auth->user();
+        if (Auth::check()) {
 
-        if (Auth::check() && !$current_user->active) {
-            return Redirect::route('client::showActivateAccountForm', cltvoMailEncode($current_user->email));
+            $user = Auth::user();
+
+            if (!$user->active) {
+                Auth::logout();
+                return Redirect::route('client::register.success.showActivationMessage', cltvoMailEncode($user->email) )
+                ->withErrors([
+                    'message' => 'Whoops, para iniciar sesión primero activa tu cuenta.',
+                ]);;
+            }
+
         }
 
         return $next($request);

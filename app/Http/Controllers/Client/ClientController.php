@@ -12,6 +12,11 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function home()
+    {
+        return view('client.home');
+    }
+
     public function index()
     {
         return view('welcome');

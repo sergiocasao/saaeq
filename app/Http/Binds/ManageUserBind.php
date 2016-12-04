@@ -20,13 +20,13 @@ class ManageUserBind extends Bind
     public static function Bind(){
     // para editr al usuario
         Route::bind('user', function ($user_slug) {
-            return User::where(["slug" => $user_slug, "active" => 1 ])->first();
+            return User::where(["slug" => $user_slug])->first();
         });
 
     // para que un usuario active su cuenta
         Route::bind('user_email', function ($encode_email) {
             $email = cltvoMailDecode($encode_email);
-            return User::with("roles","roles.permissions")->where(["email" => $email, "active" => 0 ])->first();
+            return User::with("roles","roles.permissions")->where(["email" => $email])->first();
         });
 
     // // para editr al usuario

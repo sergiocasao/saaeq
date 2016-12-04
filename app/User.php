@@ -23,7 +23,7 @@ class User extends Authenticatable
         'name',
         'slug',
         'active',
-        'activation_code',
+        'token',
         'email',
         'password',
         'slug',
@@ -35,8 +35,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token','activation_code'
+        'password', 'remember_token','token'
     ];
+
+    public static function create(array $attributes = [])
+    {
+        $attributes['slug'] = $attributes['name'];
+        $attributes['token'] = str_random(30);
+
+        return parent::create($attributes);
+    }
 
     /**
      * Get the route key for the model.
@@ -60,12 +68,7 @@ class User extends Authenticatable
 
     public function getMailActivationAcountUrl()
     {
-        return route("client::showActivateAccountForm", [ 'user_mail' => cltvoMailEncode($this->email), 'ac' => base64_encode($this->activation_code) ] );
-    }
-
-    public static function generateActivationCode($digits = 5)
-    {
-        return str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
+        return route('client::register.activateAccount', [ 'user_mail' => cltvoMailEncode($this->email), 'token' => $this->token ] );
     }
 
 }
