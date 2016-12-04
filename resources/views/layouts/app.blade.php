@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" style="min-height: 100% !important;height: 100%;">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,9 +18,9 @@
         window.Laravel = @php echo json_encode([ 'csrfToken' => csrf_token(), ]); @endphp
     </script>
 </head>
-<body style="background-color: white;">
+<body style="background-color: white;min-height: 100% !important;height: 100%;">
 
-    <div id="app">
+    <div id="app" style="min-height:100%;position:relative;">
 
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -78,18 +78,16 @@
             </div>
         </nav>
 
-        @yield('content')
+        <section style="padding-bottom: 80px;">
+            @yield('content')
+        </section>
 
-        <div class="container-fluid" style="position: absolute; bottom: 0;width: 100%;">
-            <div class="row">
-                <hr>
-                <div class="col-xs-12">
-                    <div class="col-xs-12">
-                        <p class="muted">© {{ date('Y') }} <a href="#">{{ config('app.name') }}</a>. All rights reserved</p>
-                    </div>
-                </div>
+        <footer class="footer" style="position: absolute;bottom: 0;left: 0;width: 100%;">
+            <hr>
+            <div class="container" style="padding-bottom: 10px;">
+                <p class="text-muted">© {{ date('Y') }} <a href="#">{{ config('app.name') }}</a>. All rights reserved</p>
             </div>
-        </div>
+        </footer>
 
     </div>
 

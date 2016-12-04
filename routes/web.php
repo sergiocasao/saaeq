@@ -24,3 +24,32 @@ Route::group(['prefix' => 'register', 'as' => 'register.' ], function(){
     Route::post('resend/{user_email}', 'Client\ActivateAccountController@resendActivateAccountMail')->name('resendActivateAccountMail');
 
 });
+
+Route::group([ 'prefix' => 'cursos', 'as' => 'curse.' ], function(){
+
+    // Cursos route
+    // http://www.saaeq.dev/cursos
+    Route::get('/', 'Client\Curses\CursesController@index')->name('index');
+
+    // Clases route
+    // http://www.saaeq.dev/cursos/quimica
+    Route::get('{curse}', 'Client\Curses\CursesController@show')->name('show');
+
+    Route::group([ 'prefix' => '{curse}', 'as' => 'class.' ], function(){
+
+        // Clases route
+        // http://www.saaeq.dev/cursos/quimica/tabla-periodica
+        Route::get('{class}', 'Client\Curses\ClassesController@show')->name('show');
+
+        Route::group([ 'prefix' => '{class}', 'as' => 'theme.' ], function(){
+
+            // Clases route
+            // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos
+            Route::get('{theme}', 'Client\Curses\ThemesController@show')->name('show');
+
+        });
+
+
+    });
+
+});
