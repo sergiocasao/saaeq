@@ -83,12 +83,9 @@
         <div class="container-fluid" style="position: absolute; bottom: 0;width: 100%;">
             <div class="row">
                 <hr>
-                <div class="col-lg-12">
-                    <div class="col-md-8">
-                        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
-                    </div>
-                    <div class="col-md-4">
-                        <p class="muted pull-right">© {{ date('Y') }} {{ config('app.name') }}. All rights reserved</p>
+                <div class="col-xs-12">
+                    <div class="col-xs-12">
+                        <p class="muted">© {{ date('Y') }} <a href="#">{{ config('app.name') }}</a>. All rights reserved</p>
                     </div>
                 </div>
             </div>

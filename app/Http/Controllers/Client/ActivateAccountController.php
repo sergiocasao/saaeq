@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Notifications\Users\ActivationAccountNotification;
 use Illuminate\Support\Facades\Auth;
-
 use App\User;
 
 class ActivateAccountController extends Controller
@@ -16,8 +15,12 @@ class ActivateAccountController extends Controller
 
     public function showActivationMessage(Request $request, User $user_email)
     {
+        if (Auth::check()) {
+            Auth::logout();
+        }
+
         if ($user_email->active) {
-            return $this->userVirifiedResponse($user_email);
+            return $this->userVirifiedResponse($request, $user_email);
         }
 
         $input = $request->all();
@@ -26,14 +29,21 @@ class ActivateAccountController extends Controller
             'user' => $user_email,
         ];
 
-        return view('user.activate_account', $data);
+        return view('client.activate_account', $data);
     }
 
     public function activateAccount(Request $request, User $user_email)
     {
-        if ($user_email->active) {
-            return $this->userVirifiedResponse($user_email);
+        if (Auth::check()) {
+            Auth::logout();
         }
+
+        $request['email'] = $user_email->email;
+
+        if ($user_email->active) {
+            return $this->userVirifiedResponse($request, $user_email);
+        }
+
 
         $parameters = $request->only('token');
         $token = $parameters['token'];
@@ -44,9 +54,10 @@ class ActivateAccountController extends Controller
 
         $user_email->active = true;
         $user_email->save();
-        Auth::login($user);
 
-        return $this->accountActivatedResponse($user);
+        Auth::login($user_email);
+
+        return $this->accountActivatedResponse($user_email);
     }
 
     public function resendActivateAccountMail(User $user_email)
@@ -55,17 +66,17 @@ class ActivateAccountController extends Controller
         return redirect()->back()->with('status', 'Hemos reenviado el correo  de activación a '.$user_email->email);
     }
 
-    protected function userVirifiedResponse($user)
+    protected function userVirifiedResponse(Request $request, User $user_email)
     {
-        return redirect($this->redirectTo)->with('status', 'Tu cuenta ya ha sido activada anteriormente.');
+        return redirect('login')->with('status', 'Esta cuenta ya ha sido activada anteriormente.')->withInput($request->only('email'));
     }
 
-    protected function tokenMismatchResponse($user)
+    protected function tokenMismatchResponse(User $user_email)
     {
         return redirect()->route('client::register.success.showActivationMessage', cltvoMailEncode($user_email->email));
     }
 
-    protected function accountActivatedResponse($user)
+    protected function accountActivatedResponse(User $user_email)
     {
         return redirect($this->redirectTo)->with('status', 'Gracias '.$user_email->email.', hemos activado tu cuenta exitosamente.');
     }

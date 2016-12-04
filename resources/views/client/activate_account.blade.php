@@ -6,9 +6,9 @@
 
         <br>
 
-        <div class="col-md-4 col-md-offset-1 text-center" style="padding: 2em;">
+        <div class="col-md-4 col-md-offset-1" style="padding: 2em;">
 
-            <img src="https://thecliparts.com/wp-content/uploads/2016/07/check-mark-clip-art-6.png" class="img-responsive" style="max-width: 260px;" alt="Responsive image">
+            <img src="https://thecliparts.com/wp-content/uploads/2016/07/check-mark-clip-art-6.png" class="img-responsive center-block" style="max-width: 260px;" alt="Responsive image">
 
         </div>
 
