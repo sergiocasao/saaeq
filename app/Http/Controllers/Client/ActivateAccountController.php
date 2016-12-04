@@ -11,6 +11,9 @@ use App\User;
 
 class ActivateAccountController extends Controller
 {
+
+    protected $redirectTo = '/home';
+
     public function showActivationMessage(Request $request, User $user_email)
     {
         if ($user_email->active) {
@@ -54,7 +57,7 @@ class ActivateAccountController extends Controller
 
     protected function userVirifiedResponse($user)
     {
-        return redirect()->route('client::home')->with('status', 'Tu cuenta ya ha sido activada anteriormente.');
+        return redirect($this->redirectTo)->with('status', 'Tu cuenta ya ha sido activada anteriormente.');
     }
 
     protected function tokenMismatchResponse($user)
@@ -64,7 +67,7 @@ class ActivateAccountController extends Controller
 
     protected function accountActivatedResponse($user)
     {
-        return redirect()->route('client::home')->with('status', 'Gracias '.$user_email->email.', hemos activado tu cuenta exitosamente.');
+        return redirect($this->redirectTo)->with('status', 'Gracias '.$user_email->email.', hemos activado tu cuenta exitosamente.');
     }
 
 }

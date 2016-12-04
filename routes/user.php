@@ -10,9 +10,9 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('/home', 'User\UserController@home')->name('home');
 
-Route::group([ 'prefix' => '{user}' ], function(){
-
-    Route::get('/', 'User\UserController@home')->name('home');
-
-});
+// Route::group([ 'prefix' => 'user/{user}' ], function(){
+//
+//
+// });

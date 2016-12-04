@@ -24,9 +24,3 @@ Route::group(['prefix' => 'register', 'as' => 'register.' ], function(){
     Route::post('resend/{user_email}', 'Client\ActivateAccountController@resendActivateAccountMail')->name('resendActivateAccountMail');
 
 });
-
-Route::group(['middleware' => 'authactive'], function(){
-
-    Route::get('/home', 'Client\ClientController@home')->name('home');
-
-});
