@@ -26,3 +26,26 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Test\Question::class, function (Faker\Generator $faker) {
+
+    $name = $faker->name;
+
+    return [
+        'question' => '¿'.$faker->sentence.'?',
+    ];
+
+});
+
+$factory->define(App\Models\Test\Answer::class, function (Faker\Generator $faker){
+
+        $learn_type = App\LearnType::all()->random(1);
+        $question   = App\Models\Test\Question::all()->random(1);
+
+    return [
+        'answer' => $faker->sentence,
+        'learn_type_id' => $learn_type->id,
+        'question_id' => $question->id,
+    ];
+
+});

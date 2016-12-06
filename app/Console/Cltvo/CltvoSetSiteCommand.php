@@ -17,6 +17,7 @@ class CltvoSetSiteCommand extends Command
 
         'FirstUserSet',
         'AdminsUserSet',
+        'LearnTypesSet',
 
         // 'PhotoSet',
     ];
@@ -61,7 +62,6 @@ class CltvoSetSiteCommand extends Command
         if ($this->option("migrate-refresh") || $this->option("clean")) {
             $this->call("migrate:refresh");
         }
-
 
         foreach ($this->set_classes as $class) {
 

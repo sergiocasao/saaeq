@@ -25,14 +25,14 @@ class AdminsUserSet extends CltvoSet
     protected function CltvoGetItems(){
         return [
             [
-                [
-                    // 'name'              => '',
-                    // 'first_name'        => '',
-                    // 'last_name'         => '',
-                    // 'email'             => '',
-                    // 'password'          => '',
-                    // 'active'            => true
-                ],
+                // [
+                //     'name'              => '',
+                //     'first_name'        => '',
+                //     'last_name'         => '',
+                //     'email'             => '',
+                //     'password'          => '',
+                //     'active'            => true
+                // ],
             ]
 
         ];
