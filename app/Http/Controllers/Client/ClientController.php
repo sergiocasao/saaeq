@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Curse;
 
 class ClientController extends Controller
 {
@@ -14,7 +15,13 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $data = [
+            'cursos' => Curse::orderBy('created_at')->with('signatures', 'publish')->whereHas('publish', function($q){
+                return $q->where(['is_publish' => true ]);
+            })->with('signatures')->get(),
+        ];
+
+        return view('welcome', $data);
     }
 
 

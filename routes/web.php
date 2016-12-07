@@ -29,19 +29,19 @@ Route::group([ 'prefix' => 'cursos', 'as' => 'curse.' ], function(){
 
     // Cursos route
     // http://www.saaeq.dev/cursos
-    Route::get('/', 'Client\Curses\CursesController@index')->name('index');
+    // Route::get('/', 'Client\Curses\CursesController@index')->name('index');
 
     // Clases route
     // http://www.saaeq.dev/cursos/quimica
-    Route::get('{curse}', 'Client\Curses\CursesController@show')->name('show');
+    // Route::get('{curse}', 'Client\Curses\CursesController@show')->name('show');
 
-    Route::group([ 'prefix' => '{curse}', 'as' => 'class.' ], function(){
+    Route::group([ 'prefix' => '{curse}', 'as' => 'signature.' ], function(){
 
         // Clases route
         // http://www.saaeq.dev/cursos/quimica/tabla-periodica
-        Route::get('{class}', 'Client\Curses\ClassesController@show')->name('show');
+        Route::get('{signature}', 'Client\Curses\SignatureController@show')->name('show');
 
-        Route::group([ 'prefix' => '{class}', 'as' => 'theme.' ], function(){
+        Route::group([ 'prefix' => '{signature}', 'as' => 'theme.' ], function(){
 
             // Clases route
             // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos

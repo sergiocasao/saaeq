@@ -5,20 +5,17 @@ namespace App\Http\Controllers\Client\Curses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ClassesController extends Controller
+class SignatureController extends Controller
 {
-    public function index()
-    {
-        return view('welcome');
-    }
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($class_slug)
+    public function show($curse_slug, $signature_slug)
     {
-        dd($class_slug);
+        dump($curse_slug);
+        dd($signature_slug);
         return view('welcome');
     }
 

@@ -20,11 +20,11 @@
         window.Laravel = @php echo json_encode([ 'csrfToken' => csrf_token(), ]); @endphp
     </script>
 </head>
-<body style="background-color: white;min-height: 100% !important;height: 100%;">
+<body style="background-color: white;min-height: 100% !important;height: 100%;padding-top: 50px;">
 
     <div id="app" style="min-height:100%;position:relative;">
 
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -52,8 +52,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
+                            <li><a href="{{ url('/login') }}">Iniciar sesión</a></li>
+                            <li><a href="{{ url('/register') }}">Regístrate</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -98,6 +98,14 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
+    <script type="text/javascript">
+        var $container = $('.masonry-container');
+        $container.masonry({
+            columnWidth: '.item',
+            itemSelector: '.item'
+        });
+    </script>
 
 </body>
 </html>
