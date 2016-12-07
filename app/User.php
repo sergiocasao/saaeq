@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public static function create(array $attributes = [])
     {
-        $attributes['slug'] = $attributes['name'];
+        $attributes['slug'] = str_slug($attributes['name']);
         $attributes['token'] = str_random(30);
 
         return parent::create($attributes);
@@ -69,6 +69,11 @@ class User extends Authenticatable
     public function getMailActivationAcountUrl()
     {
         return route('client::register.activateAccount', [ 'user_mail' => cltvoMailEncode($this->email), 'token' => $this->token ] );
+    }
+
+    public function answers()
+    {
+        return $this->belongsToMany(Models\Test\Answer::class);
     }
 
 }

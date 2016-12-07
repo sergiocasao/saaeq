@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
+    @include('general.favicon')
+
     <!-- Scripts -->
     <script>
         window.Laravel = @php echo json_encode([ 'csrfToken' => csrf_token(), ]); @endphp
@@ -81,6 +83,8 @@
         <section style="padding-bottom: 80px;">
             @yield('content')
         </section>
+
+        @include('general._alerts')
 
         <footer class="footer" style="position: absolute;bottom: 0;left: 0;width: 100%;">
             <hr>

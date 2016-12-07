@@ -12,7 +12,16 @@
 */
 Route::get('/home', 'User\UserController@home')->name('home');
 
-// Route::group([ 'prefix' => 'user/{user}' ], function(){
-//
-//
-// });
+
+Route::group([ 'prefix' => '{user}' ], function(){
+
+    Route::group([ 'prefix' => 'test', 'as' => 'test.' ], function(){
+
+        Route::get('/', 'User\Test\TestController@index')->name('index');
+        Route::get('question/{question_id}', 'User\Test\TestController@show')->name('show');
+        Route::post('question/{question_id}', 'User\Test\TestController@update')->name('update');
+        Route::get('thank-you', 'User\Test\TestController@thanks')->name('thanks');
+
+    });
+
+});

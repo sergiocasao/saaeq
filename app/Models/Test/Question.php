@@ -31,4 +31,29 @@ class Question extends Model
         return $this->hasMany(Answer::class);
     }
 
+    public function getNextOrPrevious($order = 'asc')
+    {
+        $previous = null;
+        foreach ( static::orderBy('id', $order)->get() as $question)
+        {
+            if(!empty($previous) && $question->id == $this->id)
+            {
+                // Yay! Our current record  is the 'next' record.
+                return $previous;
+            }
+            $previous = $question;
+        }
+        return null;
+    }
+
+    public function next()
+    {
+        return $this->getNextOrPrevious('desc');
+    }
+
+    public function previous()
+    {
+        return $this->getNextOrPrevious('asc');
+    }
+
 }

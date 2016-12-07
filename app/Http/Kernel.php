@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'useraccess' => \App\Http\Middleware\AuthUserAccess::class,
         'onlyajax' => \App\Http\Middleware\AllowOnlyAjaxRequests::class,
         'authactive' => \App\Http\Middleware\RedirectIfNotActive::class,
+        'testmaked' => \App\Http\Middleware\TestMaked::class,
     ];
 }

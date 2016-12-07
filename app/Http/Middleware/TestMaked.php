@@ -9,7 +9,7 @@ use Response;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 
-class RedirectIfNotActive
+class TestMaked
 {
     /**
      * Handle an incoming request.
@@ -25,11 +25,10 @@ class RedirectIfNotActive
 
             $user = Auth::user();
 
-            if (!$user->active) {
-                Auth::logout();
-                return Redirect::route('client::register.success.showActivationMessage', cltvoMailEncode($user->email) )
+            if ($user->test_finished) {
+                return Redirect::route('user::home', $user->slug)
                 ->withErrors([
-                    'message' => 'Whoops, para iniciar sesión primero activa tu cuenta.',
+                    'message' => 'Whoops, parrece que ya haz terminado el test. Disfruta ahora de contenido personalizado para ti.',
                 ]);
             }
 

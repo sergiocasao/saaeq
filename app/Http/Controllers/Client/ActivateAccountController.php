@@ -78,7 +78,7 @@ class ActivateAccountController extends Controller
 
     protected function accountActivatedResponse(User $user_email)
     {
-        return redirect($this->redirectTo)->with('status', 'Gracias '.$user_email->email.', hemos activado tu cuenta exitosamente.');
+        return redirect($this->redirectTo)->with('status', 'Gracias '.explode(' ', $user_email->name)[0].', hemos activado tu cuenta exitosamente.');
     }
 
 }
