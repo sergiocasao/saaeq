@@ -18,12 +18,12 @@ class CreateThemesTable extends Migration
             $table->string('label');
             $table->string('slug');
             $table->text('description');
-            $table->unsignedInteger('class_id');
+            $table->unsignedInteger('signature_id');
             $table->timestamps();
 
-            $table  ->foreign('class_id')
+            $table  ->foreign('signature_id')
                     ->references('id')
-                    ->on('classes')
+                    ->on('signatures')
                     ->onDelete('RESTRICT');
         });
     }

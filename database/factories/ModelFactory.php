@@ -49,3 +49,47 @@ $factory->define(App\Models\Test\Answer::class, function (Faker\Generator $faker
     ];
 
 });
+
+$factory->define(App\Curse::class, function (Faker\Generator $faker){
+
+    $label = ucfirst($faker->words(rand(1,4), true));
+
+    return [
+        'label'      => $label,
+        'slug'       => str_slug($label),
+        'description'=> $faker->paragraph,
+        'publish_id' => 1,
+        'publish_at' => Carbon\Carbon::now(),
+    ];
+
+});
+
+$factory->define(App\Signature::class, function (Faker\Generator $faker){
+
+    $label = ucfirst($faker->words(rand(1,4), true));
+
+    $curse = App\Curse::all()->random(1);
+
+    return [
+        'label'      => $label,
+        'slug'       => str_slug($label),
+        'description'=> $faker->paragraph,
+        'curse_id'   => $curse->id,
+    ];
+
+});
+
+$factory->define(App\Theme::class, function (Faker\Generator $faker){
+
+    $label = ucfirst($faker->words(rand(1,4), true));
+
+    $signature = App\Signature::all()->random(1);
+
+    return [
+        'label'         => $label,
+        'slug'          => str_slug($label),
+        'description'   => $faker->paragraph,
+        'signature_id'  => $signature->id,
+    ];
+
+});

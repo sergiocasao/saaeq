@@ -2,15 +2,17 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
+
 use App\Models\Traits\UniqueSlugTrait;
 use App\Models\Traits\PhotoableTrait;
 use App\Models\Traits\PublishableTrait;
-use App\Signature;
+use App\Curse;
+use App\Theme;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Curse extends Model
+class Signature extends Model
 {
+
     use UniqueSlugTrait;
     use PhotoableTrait;
     use PublishableTrait;
@@ -19,7 +21,7 @@ class Curse extends Model
      *
      * @var string
      */
-    protected $table = 'curses';
+    protected $table = 'signatures';
 
     /**
      * The attributes that are mass assignable.
@@ -27,24 +29,23 @@ class Curse extends Model
      * @var array
      */
     protected $fillable = [
-        'label','slug','description','publish_id','publish_at'
+        'label','slug','description','curse_id'
     ];
 
     protected $casts = [
         'label'         => 'string',
         'slug'          => 'string',
         'description'   => 'string',
-        'publish_id'    => 'integer',
+        'curse_id'      => 'integer',
     ];
 
-    protected $date = [
-        'created_at',
-        'updated_at',
-        'publish_at',
-    ];
-
-    public function signatures()
+    public function curse()
     {
-        return $this->hasMany(Signature::class);
+        return $this->belongsTo(Curse::class);
+    }
+
+    public function themes()
+    {
+        return $this->hasMany(Theme::class);
     }
 }
