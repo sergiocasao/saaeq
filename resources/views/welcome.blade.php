@@ -85,44 +85,6 @@
             </div>
         </div> --}}
 
-        <style media="screen">
-            .curse {
-                display: block;
-                margin: 0 auto;
-                width: 90%;
-                /*background-color: red;*/
-                /*border: 1px solid #eee;*/
-            }
-            .curse__header {
-                padding: 15px 10px 30px 15px;
-                border-radius: 15px 15px 0 0;
-                /*background-image: url('http://placehold.it/350x350');*/
-                background-color: #3097D1;
-                color: white;
-            }
-            .curse__signatures {
-                background-color: white;
-                border-right: 1px solid #ccc;
-                border-bottom: 1px solid #ccc;
-                border-left: 1px solid #ccc;
-                border-radius: 0 0 15px 15px;
-            }
-            .curse__signature {
-                /*background-color: blue;*/
-                padding: 1em;
-                border-top: 1px solid #ccc;
-                display: block;
-            }
-            .curse__signature:last-child {
-                border-radius: 0 0 15px 15px;
-            }
-            .curse__signature:hover {
-                background-color: #eee;
-                cursor: pointer;
-                text-decoration: none;
-            }
-        </style>
-
         @if (!Auth::check())
         <div style="padding: 3em 0;background-image: url('{{asset('images/dna.jpg')}}'); color: white;background-size: cover;">
             <div class="row">

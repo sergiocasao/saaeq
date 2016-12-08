@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Client\Curses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\Signature;
+use App\Curse;
+
 class SignatureController extends Controller
 {
     /**
@@ -12,11 +15,16 @@ class SignatureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($curse_slug, $signature_slug)
+    public function show(Curse $curse, Signature $signature)
     {
-        dump($curse_slug);
-        dd($signature_slug);
-        return view('welcome');
+        // dump($curse);
+        // dump($signature);
+
+        $data = [
+            'curse' => $curse,
+            'signature' => $signature,
+        ];
+        return view('user.curses.signature', $data);
     }
 
 
