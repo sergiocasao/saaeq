@@ -1,3 +1,44 @@
+ENV FILE.
+
+Crear archivo .env en la raíz del proyecto y poner el contenido a partir de aqui:
+
+```
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=base64:FiDDhRDFFTG54n2Ji0EdNaOHZeIZQC6mPoKxgai/sys=
+
+URL_SITE=saaeq.dev
+
+DB_HOST=localhost
+DB_DATABASE=saaeq
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+
+APP_NAME=SAAEQ
+
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
+
+MAIL_DRIVER=smtp
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=f9c358c708042e
+MAIL_PASSWORD=68d9fb9afcbd49
+MAIL_ENCRYPTION=tls
+
+MAILGUN_DOMAIN=mail.webstartup.mx
+MAILGUN_SECRET=key-c67997ee0e618adbb019402b9db0d741
+
+SEND_MAIL_AS=sifonsecac@hotmail.com
+
+SUPER_ADMIN_USER_NAME=sergio
+SUPER_ADMIN_USER_FIRST_NAME=Sergio
+SUPER_ADMIN_USER_LAST_NAME=Fonseca
+SUPER_ADMIN_USER_EMAIL=sifonsecac@hotmail.com
+SUPER_ADMIN_USER_PASS=sergio
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img width="150"src="https://laravel.com/laravel.png"></a></p>
 
 <p align="center">
