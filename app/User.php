@@ -85,4 +85,24 @@ class User extends Authenticatable
         return $this->belongsToMany(Exam::class)->withPivot('qualification')->withTimestamps();
     }
 
+    public function processing_learn_type()
+    {
+        return $this->belongsTo(LearnType::class, 'processing_learn_type_id');
+    }
+
+    public function perception_learn_type()
+    {
+        return $this->belongsTo(LearnType::class, 'perception_learn_type_id');
+    }
+
+    public function representation_learn_type()
+    {
+        return $this->belongsTo(LearnType::class, 'representation_learn_type_id');
+    }
+
+    public function comprenhention_learn_type()
+    {
+        return $this->belongsTo(LearnType::class, 'comprenhention_learn_type_id');
+    }
+
 }

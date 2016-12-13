@@ -38,10 +38,10 @@
                     @if (!Auth::user()->test_finished)
                         Aún no has realizado el test para obtener tus tipos de aprendizaje, realizalo <a href="{{ route('user::test.index', Auth::user()->slug ) }}">aquí</a>.
                     @else
-                        <strong>Procesamiento:  </strong>   {{ LearnType::find(Auth::user()->processing_learn_type_id) }}
-                        <strong>Procesamiento:  </strong>   {{ LearnType::find(Auth::user()->perception_learn_type_id) }}
-                        <strong>Representacion: </strong>   {{ LearnType::find(Auth::user()->representation_learn_type_id) }}
-                        <strong>Comprensión:    </strong>   {{ LearnType::find(Auth::user()->comprenhention_learn_type_id) }}
+                        <strong>Procesamiento:  </strong>   {{ Auth::user()->processing_learn_type->name }} <br>
+                        <strong>Procesamiento:  </strong>   {{ Auth::user()->perception_learn_type->name }} <br>
+                        <strong>Representacion: </strong>   {{ Auth::user()->representation_learn_type->name }} <br>
+                        <strong>Comprensión:    </strong>   {{ Auth::user()->comprenhention_learn_type->name }} <br>
                     @endif
 
                     <hr>
