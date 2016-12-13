@@ -4,6 +4,8 @@ namespace App\Models\Test;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Exam;
+
 class Question extends Model
 {
     /**
@@ -40,8 +42,9 @@ class Question extends Model
 
     public function getNextOrPrevious($order = 'asc')
     {
+        $exam = Exam::testExam()->get()->first();
         $previous = null;
-        foreach ( static::orderBy('id', $order)->get() as $question)
+        foreach ( $exam->questions()->orderBy('id', $order)->get() as $question)
         {
             if(!empty($previous) && $question->id == $this->id)
             {

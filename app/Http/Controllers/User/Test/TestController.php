@@ -35,7 +35,7 @@ class TestController extends Controller
 
         $data = [
             'first_question'    => $exam->questions()->orderBy('id')->first(),
-            'total_questions'   => Question::all()->count(),
+            'total_questions'   => $exam->questions->count(),
         ];
 
         return view('user.test.test', $data);
@@ -44,9 +44,9 @@ class TestController extends Controller
     public function show(User $user, Question $question_id)
     {
         /////// Redirecciona si no hay respondido alguna pregunta anterior.
-
+        $exam = Exam::testExam()->get()->first();
         $answered_questions = $user->answers()->orderBy('question_id')->get();
-        $total_questions = Question::orderBy('id')->get();
+        $total_questions = $exam->questions()->orderBy('id')->get();
 
         if ($answered_questions->count() != $total_questions->count()) {
             $i = 0;
@@ -86,7 +86,7 @@ class TestController extends Controller
             'question'          => $question_id,
             'next_question'     => $question_id->next(),
             'prev_question'     => $question_id->previous(),
-            'total_questions'   => Question::all()->count(),
+            'total_questions'   => $total_questions->count(),
             'user_selected'     => $user->answers->where('question_id', $question_id->id )->first(),
         ];
 

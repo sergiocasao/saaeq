@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div style="padding: 100px 0;background-image: url('{{asset('images/wallpaper.jpg')}}'); color: white;background-size: cover;position: relative;min-height: 350px;">
+<div style="padding: 100px 0;background-image: url('{{asset('images/wallpaper.jpg')}}'); color: white;background-size: cover;position: relative;min-height: 350px;margin-top: -40px;">
     <div class="row" style="margin: 0;">
         <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1" style="z-index: 2;">
             <h1>{{ $signature->label }}</h1>

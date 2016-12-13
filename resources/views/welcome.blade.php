@@ -86,7 +86,7 @@
         </div> --}}
 
         @if (!Auth::check())
-            <div style="padding: 3em 0;background-image: url('{{asset('images/dna.jpg')}}'); color: white;background-size: cover;">
+            <div style="padding: 3em 0;background-image: url('{{asset('images/dna.jpg')}}'); color: white;background-size: cover;margin-top: -40px;">
                 <div class="row" style="margin: 0;">
                     <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
                         <h1>Sistema de Apoyo al Aprendizaje de los Elementos Quimicos.!</h1>

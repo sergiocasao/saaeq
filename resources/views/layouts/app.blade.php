@@ -129,7 +129,7 @@
         <footer class="footer" style="position: absolute;bottom: 0;left: 0;width: 100%;">
             <hr>
             <div class="container" style="padding-bottom: 10px;">
-                <p class="text-muted">© {{ date('Y') }} <a href="#">{{ config('app.name') }}</a>. All rights reserved</p>
+                <p class="text-muted">© {{ date('Y') }} <a href="#">{{ config('app.name') }}</a>. Todos los derechos reservados.</p>
             </div>
         </footer>
 

@@ -15,6 +15,8 @@ Route::get('/home', 'User\UserController@home')->name('home');
 
 Route::group([ 'prefix' => '{user}' ], function(){
 
+    Route::get('/', 'User\UserController@index')->name('index');
+
     Route::group([ 'prefix' => 'test', 'as' => 'test.' ], function(){
 
         Route::get('/', 'User\Test\TestController@index')->name('index');
