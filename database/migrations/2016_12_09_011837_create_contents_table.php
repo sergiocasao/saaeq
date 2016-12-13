@@ -23,7 +23,7 @@ class CreateContentsTable extends Migration
 
             $table->unsignedInteger('theme_id');
 
-            $table->text('video');
+            $table->string('video')->default(null);
 
             $table->text('content');
             $table->boolean('default')->default(false);

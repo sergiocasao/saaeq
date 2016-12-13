@@ -28,20 +28,23 @@ class Content extends Model
         'representation_learn_type_id',
         'comprenhention_learn_type_id',
         'default',
+        'theme_id',
     ];
 
     protected $casts = [
         'content'                       => 'string',
-        'video'                         => 'array',
+        'video'                         => 'string',
         'processing_learn_type_id'      => 'integer',
         'perception_learn_type_id'      => 'integer',
         'representation_learn_type_id'  => 'integer',
         'comprenhention_learn_type_id'  => 'integer',
         'default'                       => 'boolean',
+        'theme_id'                      => 'integer',
     ];
 
     protected $attributes = [
         'video' => '',
+        'content' => '',
     ];
 
     public function theme()
@@ -52,6 +55,38 @@ class Content extends Model
     public function scopeDefault($query)
     {
         return $query->where('default', 1);
+    }
+
+    public static function getRandomVideo($theme_slug)
+    {
+        // Get random files and pick one.
+        $folder_path = public_path('videos/'.$theme_slug); // in my test case it's under /public folder
+
+        $files = preg_grep('~\.(mp4)$~', scandir($folder_path));
+
+        $randomFile = $files[array_rand($files)]; // if 5 files found, random int between 0 and 4
+
+        // // Display it
+        $file = 'http://saaeq.dev/videos/'.$theme_slug.'/'.rawurlencode($randomFile);
+
+        return $file;
+    }
+
+    public function scopeLearnTypeId($query, $type, $id)
+    {
+        return $query->where($type, $id);
+    }
+
+    public function scopeContentForUser($query, User $user)
+    {
+        $res = $query
+            ->orderBy('processing_learn_type_id', $user->processing_learn_type_id )
+            ->orderBy('perception_learn_type_id', $user->perception_learn_type_id )
+            ->orderBy('representation_learn_type_id', $user->representation_learn_type_id )
+            ->orderBy('comprenhention_learn_type_id', $user->comprenhention_learn_type_id )
+            ;
+
+        return $res;
     }
 
 }

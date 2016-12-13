@@ -112,7 +112,8 @@ $factory->define(App\Content::class, function (Faker\Generator $faker){
         'representation_learn_type_id'  => $learn_type3->id,
         'comprenhention_learn_type_id'  => $learn_type4->id,
         'theme_id'                      => $theme->id,
-        'content'                       => $faker->paragraphs(20, true),
+        'video'                         => App\Content::getRandomVideo($theme->slug),
+        'content'                       => '',//$faker->paragraphs(20, true),
         'default'                       => !$theme->hasDefaultContent(),
     ];
 

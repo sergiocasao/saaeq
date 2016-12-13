@@ -20,11 +20,11 @@ class ThemesController extends Controller
      */
     public function show(Curse $curse, Signature $signature, Theme $theme)
     {
-        $content = $theme->contents()->default()->get()->first();
-        // if (Auth::guest()) {
-        // }else {
-        //     // Get the content for the auth user;
-        // }
+        if (Auth::guest() || !Auth::user()->test_finished) {
+            $content = $theme->contents()->default()->get()->first();
+        }else {
+            $content = $theme->contents()->contentForUser(Auth::user())->get()->first();
+        }
 
         $data = [
             'content'           => $content,

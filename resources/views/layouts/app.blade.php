@@ -60,7 +60,7 @@
         }
     </style>
 </head>
-<body style="background-color: white;min-height: 100% !important;height: 100%;padding-top: 90px;">
+<body style="background-color: white;min-height: 100% !important;height: 100%;padding-top: 70px;">
 
     <div id="app" style="min-height:100%;position:relative;">
 

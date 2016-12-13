@@ -29,6 +29,7 @@ class CltvoSetSiteCommand extends Command
         'AnswersTBUseSet',
         'AnswersTBRegSet',
         'AnswersTBElSet',
+        'ContentSet',
         // 'PhotoSet',
     ];
 
