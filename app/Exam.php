@@ -3,6 +3,7 @@
 namespace App;
 
 use App\LearnType;
+use App\Models\Test\Question;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,18 +23,31 @@ class Exam extends Model
      */
     protected $fillable = [
         'label',
-        'slug',
         'theme_id',
     ];
 
     protected $casts = [
         'label'         => 'string',
-        'slug'          => 'string',
         'theme_id'      => 'integer',
     ];
 
     public function theme()
     {
         return $this->belongsTo(Theme::class);
+    }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    public function scopeTestExam($query)
+    {
+        return $query->where('theme_id', null);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('qualification')->withTimestamps();
     }
 }

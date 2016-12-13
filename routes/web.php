@@ -47,6 +47,17 @@ Route::group([ 'prefix' => 'cursos', 'as' => 'curse.' ], function(){
             // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos
             Route::get('{theme}', 'Client\Curses\ThemesController@show')->name('show');
 
+            Route::group([ 'prefix' => '{theme}/examen', 'as' => 'exam.' ], function(){
+
+                // Clases route
+                // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos/exam
+                Route::get('/', 'Client\Curses\ExamController@show')->name('show');
+
+                Route::post('/', 'Client\Curses\ExamController@store')->name('store');
+
+
+            });
+
         });
 
 

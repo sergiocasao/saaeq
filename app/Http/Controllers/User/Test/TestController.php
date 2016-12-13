@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Test\Answer;
 use App\Models\Test\Question;
+use App\Exam;
 use App\User;
+use App\LearnType;
 use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
@@ -28,8 +30,11 @@ class TestController extends Controller
      */
     public function index()
     {
+
+        $exam = Exam::testExam()->get()->first();
+
         $data = [
-            'first_question'    => Question::orderBy('id')->first(),
+            'first_question'    => $exam->questions()->orderBy('id')->first(),
             'total_questions'   => Question::all()->count(),
         ];
 
@@ -104,8 +109,7 @@ class TestController extends Controller
         $user->save();
 
         if (empty($question_id->next())) {
-            $user->test_finished = true;
-            $user->save();
+            $this->assignStyle($user);
             return redirect()->route('user::test.thanks', ['user' => Auth::user()->slug]);
         }
 
@@ -119,5 +123,72 @@ class TestController extends Controller
         }
 
         return view('user.test.thanks');
+    }
+
+    protected function assignStyle(User $user){
+
+        $activo     = $user->answers()->learnType('activo')->get()->count();
+        $reflexivo  = $user->answers()->learnType('reflexivo')->get()->count();
+
+        $sensorial  = $user->answers()->learnType('sensorial')->get()->count();
+        $intuitivo  = $user->answers()->learnType('intuitivo')->get()->count();
+
+        $visual     = $user->answers()->learnType('visual')->get()->count();
+        $verbal     = $user->answers()->learnType('verbal')->get()->count();
+
+        $secuencial = $user->answers()->learnType('secuencial')->get()->count();
+        $global     = $user->answers()->learnType('global')->get()->count();
+
+        $processing_learn_type      = null;
+        $perception_learn_type      = null;
+        $representation_learn_type  = null;
+        $comprenhention_learn_type  = null;
+
+        if ($activo > $reflexivo) {
+            $processing_learn_type = LearnType::getModelBySlug('activo')->get()->first();
+        }elseif ($activo < $reflexivo) {
+            $processing_learn_type = LearnType::getModelBySlug('reflexivo')->get()->first();
+        }
+
+        if ($sensorial > $intuitivo) {
+            $perception_learn_type = LearnType::getModelBySlug('sensorial')->get()->first();
+        }elseif ($sensorial < $intuitivo) {
+            $perception_learn_type = LearnType::getModelBySlug('intuitivo')->get()->first();
+        }
+
+        if ($visual > $verbal) {
+            $representation_learn_type = LearnType::getModelBySlug('visual')->get()->first();
+        }elseif ($visual < $verbal) {
+            $representation_learn_type = LearnType::getModelBySlug('verbal')->get()->first();
+        }
+
+        if ($secuencial > $global) {
+            $comprenhention_learn_type = LearnType::getModelBySlug('secuencial')->get()->first();
+        }elseif ($secuencial < $global) {
+            $comprenhention_learn_type = LearnType::getModelBySlug('global')->get()->first();
+        }
+
+        // dump($activo);
+        // dump($reflexivo);
+        // dump($sensorial);
+        // dump($intuitivo);
+        // dump($visual);
+        // dump($verbal);
+        // dump($secuencial);
+        // dump($global);
+        //
+        // dump($processing_learn_type->name);
+        // dump($perception_learn_type->name);
+        // dump($representation_learn_type->name);
+        // dump($comprenhention_learn_type->name);
+
+        $user->processing_learn_type_id = $processing_learn_type ? $processing_learn_type->id : null;
+        $user->perception_learn_type_id = $perception_learn_type ? $perception_learn_type->id : null;
+        $user->representation_learn_type_id = $representation_learn_type ? $representation_learn_type->id : null;
+        $user->comprenhention_learn_type_id = $comprenhention_learn_type ? $comprenhention_learn_type->id : null;
+
+        $user->test_finished = true;
+
+        return $user->save();
     }
 }

@@ -19,16 +19,23 @@ class Question extends Model
      * @var array
      */
     protected $fillable = [
-        'question',
+        'question', 'order', 'exam_id'
     ];
 
     protected $casts = [
         'question'  => 'string',
+        'order'     => 'integer',
+        'exam_id'   => 'integer',
     ];
 
     public function answers()
     {
         return $this->hasMany(Answer::class);
+    }
+
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class);
     }
 
     public function getNextOrPrevious($order = 'asc')
@@ -54,6 +61,16 @@ class Question extends Model
     public function previous()
     {
         return $this->getNextOrPrevious('asc');
+    }
+
+    public function scopeOrderQuestion($query, $order)
+    {
+        return $query->where('order', $order);
+    }
+
+    public static function getCorrectAnswer($question_id)
+    {
+        return static::find($question_id)->answers()->correct()->get()->first();
     }
 
 }

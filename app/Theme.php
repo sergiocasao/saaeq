@@ -47,9 +47,19 @@ class Theme extends Model
         return $this->hasMany(Content::class);
     }
 
+    public function exam()
+    {
+        return $this->hasOne(Exam::class);
+    }
+
     public function hasDefaultContent()
     {
         return $this->contents()->default()->get()->first() ? true : false;
+    }
+
+    public static function getQuestion($slug, $order)
+    {
+        return static::getObjectBySlug($slug)->exam->questions()->orderQuestion($order)->get()->first();
     }
 
 }

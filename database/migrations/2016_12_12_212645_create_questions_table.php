@@ -18,7 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->text('question');
             $table->unsignedInteger('exam_id')->nullable();
-            // $table->integer('order');
+            $table->integer('order');
             $table->timestamps();
 
             $table  ->foreign('exam_id')

@@ -20,15 +20,17 @@ class ThemesController extends Controller
      */
     public function show(Curse $curse, Signature $signature, Theme $theme)
     {
-        if (Auth::guest()) {
-            $content = $theme->contents()->default()->get()->first();
-        }else {
-            // Get the content for the auth user;
-        }
+        $content = $theme->contents()->default()->get()->first();
+        // if (Auth::guest()) {
+        // }else {
+        //     // Get the content for the auth user;
+        // }
 
         $data = [
-            'content' => $content,
-            'theme'   => $theme,
+            'content'           => $content,
+            'theme'             => $theme->load('exam'),
+            'signature_slug'    => $signature->slug,
+            'curse_slug'        => $curse->slug,
         ];
 
         return view('user.curses.theme', $data);

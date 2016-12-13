@@ -27,6 +27,10 @@ class User extends Authenticatable
         'email',
         'password',
         'slug',
+        'processing_learn_type_id',
+        'perception_learn_type_id',
+        'representation_learn_type_id',
+        'comprenhention_learn_type_id',
     ];
 
     /**
@@ -74,6 +78,11 @@ class User extends Authenticatable
     public function answers()
     {
         return $this->belongsToMany(Models\Test\Answer::class);
+    }
+
+    public function exams()
+    {
+        return $this->belongsToMany(Exam::class)->withPivot('qualification')->withTimestamps();
     }
 
 }

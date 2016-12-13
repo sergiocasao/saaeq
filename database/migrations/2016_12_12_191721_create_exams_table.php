@@ -16,7 +16,6 @@ class CreateExamsTable extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->increments('id');
             $table->string('label');
-            $table->string('slug')->default(false);
             $table->unsignedInteger('theme_id')->nullable();
             $table->timestamps();
 
@@ -30,6 +29,8 @@ class CreateExamsTable extends Migration
 
             $table->unsignedInteger('exam_id');
             $table->unsignedInteger('user_id');
+            $table->double('qualification');
+            $table->timestamps();
 
             $table  ->foreign('exam_id')
                     ->references('id')

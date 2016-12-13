@@ -17,7 +17,7 @@ class CreateAnswersTable extends Migration
             $table->increments('id');
             $table->string('answer');
             $table->boolean('correct')->default(false);
-            $table->unsignedInteger('learn_type_id');
+            $table->unsignedInteger('learn_type_id')->nullable()->default(null);
             $table->unsignedInteger('question_id');
             $table->timestamps();
 
@@ -30,8 +30,6 @@ class CreateAnswersTable extends Migration
                     ->references('id')
                     ->on('questions')
                     ->onDelete('RESTRICT');
-
-            $table->index(['learn_type_id', 'question_id']);
         });
 
         Schema::create('answer_user', function (Blueprint $table) {

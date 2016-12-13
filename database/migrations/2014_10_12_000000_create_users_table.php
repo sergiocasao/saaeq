@@ -26,8 +26,34 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->rememberToken();
+
+            $table->unsignedInteger('processing_learn_type_id')->nullable();
+            $table->unsignedInteger('perception_learn_type_id')->nullable();
+            $table->unsignedInteger('representation_learn_type_id')->nullable();
+            $table->unsignedInteger('comprenhention_learn_type_id')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
+
+            $table  ->foreign('processing_learn_type_id')
+                    ->references('id')
+                    ->on('learn_types')
+                    ->onDelete('RESTRICT');
+
+            $table  ->foreign('perception_learn_type_id')
+                    ->references('id')
+                    ->on('learn_types')
+                    ->onDelete('RESTRICT');
+
+            $table  ->foreign('representation_learn_type_id')
+                    ->references('id')
+                    ->on('learn_types')
+                    ->onDelete('RESTRICT');
+
+            $table  ->foreign('comprenhention_learn_type_id')
+                    ->references('id')
+                    ->on('learn_types')
+                    ->onDelete('RESTRICT');
         });
     }
 

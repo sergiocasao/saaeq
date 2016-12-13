@@ -48,15 +48,9 @@ class ThemeSet extends CltvoSet
                 "signature_id"  => (Signature::getObjectBySlug('tabla-periodica'))->id,
             ],
             [
-                "label"         => "Periodos de la tabla periódica",
-                "slug"          => "periodos-de-la-tabla-periodica",
+                "label"         => "Bloques y periodos de la tabla periódica",
+                "slug"          => "bloques-y-periodos-de-la-tabla-periodica",
                 "description"   => "Aprende sobre el número de niveles energéticos de los elemntos identificando su periodo.",
-                "signature_id"  => (Signature::getObjectBySlug('tabla-periodica'))->id,
-            ],
-            [
-                "label"         => "Bloques de la tabla periódica",
-                "slug"          => "bloques-de-la-tabla-periodica",
-                "description"   => "La tabla periódica de los elementos se puede dividir en bloques de elementos según el orbital que estén ocupando los electrones más externos, tomando el bloque el nombre de dicho orbital",
                 "signature_id"  => (Signature::getObjectBySlug('tabla-periodica'))->id,
             ],
             [

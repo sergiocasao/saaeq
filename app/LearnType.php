@@ -4,8 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Models\Traits\UniqueSlugTrait;
+
 class LearnType extends Model
 {
+    use UniqueSlugTrait;
     /**
      * The database table used by the model.
      *
@@ -40,6 +43,11 @@ class LearnType extends Model
     public function scopeType($query, $type)
     {
         return $query->where('type', $type);
+    }
+
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('slug', $slug);
     }
 
 }

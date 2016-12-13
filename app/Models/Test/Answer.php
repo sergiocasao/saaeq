@@ -4,6 +4,8 @@ namespace App\Models\Test;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\LearnType;
+
 class Answer extends Model
 {
     /**
@@ -19,12 +21,13 @@ class Answer extends Model
      * @var array
      */
     protected $fillable = [
-        'answers','learn_type_id', 'question_id'
+        'answer','learn_type_id', 'question_id', 'correct'
     ];
 
     protected $casts = [
-        'answers'       => 'string',
+        'answer'        => 'string',
         'learn_type_id' => 'integer',
+        'correct'       => 'boolean',
     ];
 
     public function learnType()
@@ -40,6 +43,17 @@ class Answer extends Model
     public function users()
     {
         return $this->belongsToMany(App\User::class);
+    }
+
+    public function scopeLearnType($query, $slug)
+    {
+        $learn_type = LearnType::getModelBySlug($slug)->get()->first();
+        return $query->where('learn_type_id', $learn_type->id);
+    }
+
+    public function scopeCorrect($query)
+    {
+        return $query->where('correct', true);
     }
 
 }
