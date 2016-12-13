@@ -12,7 +12,6 @@ use App\Theme;
 
 class Signature extends Model
 {
-
     use UniqueSlugTrait;
     use PhotoableTrait;
     use PublishableTrait;

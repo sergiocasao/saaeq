@@ -28,7 +28,7 @@ class TestMaked
             if ($user->test_finished) {
                 return Redirect::route('user::home', $user->slug)
                 ->withErrors([
-                    'message' => 'Whoops, parrece que ya haz terminado el test. Disfruta ahora de contenido personalizado para ti.',
+                    'message' => 'Whoops, parece que ya haz terminado el test. Disfruta ahora de contenido personalizado para ti.',
                 ]);
             }
 

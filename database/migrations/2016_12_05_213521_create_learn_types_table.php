@@ -18,6 +18,7 @@ class CreateLearnTypesTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('description');
+            $table->string('type');
             $table->timestamps();
         });
     }

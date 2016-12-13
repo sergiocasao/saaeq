@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
 
-class CreateQuestionsTable extends Migration
+class CreateCluesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +13,15 @@ class CreateQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('clues', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('question');
-            // $table->integer('order');
+            $table->unsignedInteger('question_id');
             $table->timestamps();
+
+            $table  ->foreign('question_id')
+                    ->references('id')
+                    ->on('questions')
+                    ->onDelete('RESTRICT');
         });
     }
 
@@ -29,6 +32,6 @@ class CreateQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('clues');
     }
 }

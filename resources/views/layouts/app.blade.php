@@ -29,9 +29,11 @@
             /*border: 1px solid #eee;*/
         }
         .curse__header {
-            padding: 15px 10px 30px 15px;
+            padding: 1px 10px 10px 15px;
             border-radius: 15px 15px 0 0;
-            /*background-image: url('http://placehold.it/350x350');*/
+            background-image: url('{{ asset('images/header.jpg') }}');
+            background-size: cover;
+            background-position: center;
             background-color: #3097D1;
             color: white;
         }
@@ -58,7 +60,7 @@
         }
     </style>
 </head>
-<body style="background-color: white;min-height: 100% !important;height: 100%;padding-top: 50px;">
+<body style="background-color: white;min-height: 100% !important;height: 100%;padding-top: 90px;">
 
     <div id="app" style="min-height:100%;position:relative;">
 

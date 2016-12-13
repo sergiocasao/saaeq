@@ -19,18 +19,27 @@ class LearnType extends Model
      * @var array
      */
     protected $fillable = [
-        'name','slug','description'
+        'name',
+        'slug',
+        'description',
+        'type'
     ];
 
     protected $casts = [
         'name'          => 'string',
         'slug'          => 'string',
         'description'   => 'string',
+        'type'          => 'string',
     ];
 
     public function answers()
     {
         return $this->hasMany(Models\Test\Answer::class);
+    }
+
+    public function scopeType($query, $type)
+    {
+        return $query->where('type', $type);
     }
 
 }

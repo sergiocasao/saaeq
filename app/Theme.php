@@ -42,4 +42,14 @@ class Theme extends Model
         return $this->belongsTo(Signature::class);
     }
 
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+
+    public function hasDefaultContent()
+    {
+        return $this->contents()->default()->get()->first() ? true : false;
+    }
+
 }

@@ -15,8 +15,8 @@ trait UniqueSlugTrait {
 
         $slug_is_not_unique = true;
         $gluter = "-";
-        while ($slug_is_not_unique) {
 
+        while ($slug_is_not_unique) {
             if (!static::slugExist($slug)) {
                 $slug_is_not_unique = false;
             }else {
@@ -30,15 +30,12 @@ trait UniqueSlugTrait {
 
     public static function slugExist($slug)
     {
-        $table = with(new static)->getTranslationTable();
-        return DB::table($table)->where('slug', $slug)->count() > 0;
+        return DB::table($this->table)->where('slug', $slug)->count() > 0;
     }
 
     public function scopeGetModelBySlug($query, $slug)
     {
-        return $query->whereHas('languages', function($pivot_query) use($slug) {
-            $pivot_query->where('slug', $slug);
-        })->with('languages');
+        return $query->where('slug', $slug);
     }
 
     public static function getObjectBySlug($slug)
@@ -46,16 +43,5 @@ trait UniqueSlugTrait {
         $models = static::getModelBySlug($slug)->get();
         return $models->count() > 0 ? $models->first() : null;
     }
-
-    public function updateUniqueSlug( $new_name, $language_iso )
-    {
-        if (trim(strtolower($new_name))  == trim(strtolower($this->translation($language_iso)->label)) ) {
-            return $this->translation($language_iso)->slug;
-        }
-
-        return static::generateUniqueSlug($new_name);
-    }
-
-
 
 }

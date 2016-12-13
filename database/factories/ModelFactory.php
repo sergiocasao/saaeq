@@ -1,4 +1,5 @@
 <?php
+use App\LearnType;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'active' => true,
+        'token' => str_random(30),
         'remember_token' => str_random(10),
     ];
 });
@@ -90,6 +92,28 @@ $factory->define(App\Theme::class, function (Faker\Generator $faker){
         'slug'          => str_slug($label),
         'description'   => $faker->paragraph,
         'signature_id'  => $signature->id,
+    ];
+
+});
+
+$factory->define(App\Content::class, function (Faker\Generator $faker){
+
+    $label = ucfirst($faker->words(rand(1,4), true));
+
+    $learn_type1 = App\LearnType::type('Processing')->get()->random(1);
+    $learn_type2 = App\LearnType::type('Perception')->get()->random(1);
+    $learn_type3 = App\LearnType::type('Representation')->get()->random(1);
+    $learn_type4 = App\LearnType::type('Comprenhention')->get()->random(1);
+    $theme       = App\Theme::all()->random(1);
+
+    return [
+        'processing_learn_type_id'      => $learn_type1->id,
+        'perception_learn_type_id'      => $learn_type2->id,
+        'representation_learn_type_id'  => $learn_type3->id,
+        'comprenhention_learn_type_id'  => $learn_type4->id,
+        'theme_id'                      => $theme->id,
+        'content'                       => $faker->paragraphs(20, true),
+        'default'                       => !$theme->hasDefaultContent(),
     ];
 
 });

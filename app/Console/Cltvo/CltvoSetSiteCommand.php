@@ -18,6 +18,9 @@ class CltvoSetSiteCommand extends Command
         'AdminsUserSet',
         'LearnTypesSet',
         'PublishSet',
+        'CurseSet',
+        'SignatureSet',
+        'ThemeSet',
         // 'PhotoSet',
     ];
 

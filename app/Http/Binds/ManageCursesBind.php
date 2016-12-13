@@ -9,6 +9,7 @@ use Auth;
 
 use App\Curse;
 use App\Signature;
+use App\Theme;
 
 class ManageCursesBind extends Bind
 {
@@ -24,6 +25,10 @@ class ManageCursesBind extends Bind
 
         Route::bind('signature', function ($signature) {
             return Signature::where("slug", $signature)->with('themes')->first();
+        });
+
+        Route::bind('theme', function ($theme) {
+            return Theme::where("slug", $theme)->first();
         });
 
     }
