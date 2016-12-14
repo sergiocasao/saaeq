@@ -45,12 +45,11 @@ class UpdatePasswordNotification extends Notification
     {
 
         return (new MailMessage)
-                    ->from( Setting::getEmail('notifications'), env('APPNOMBRE') )
+                    ->from( 'no-reply@saaeq.com', env('APP_NAME') )
                     ->view('vendor.notifications.email')
-                    ->subject( trans('notifications.UpdatePasswordNotification.subject') )
-                    ->greeting( Setting::getEmailGreeting() )
-                    ->line( trans('notifications.UpdatePasswordNotification.copy') )
-                    ->line( Setting::getEmailFarewell() );
+                    ->subject( 'Haz actualizado tu contraseña.' )
+                    ->greeting( 'Hola '.$notifiable->name.', ' )
+                    ->line( 'Recientemente vimos que actualizaste tu contraseña, si no fuiste  tu por favor  ponte en contacto con nosotros.' );
     }
 
     /**

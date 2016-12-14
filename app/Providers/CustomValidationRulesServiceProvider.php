@@ -19,7 +19,9 @@ class CustomValidationRulesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        Validator::extendImplicit('password_check', function($attribute, $value, $parameters, $validator) {
+            return Hash::check($value,$parameters[0]);
+        });
     }
 
     /**

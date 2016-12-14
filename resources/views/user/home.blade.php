@@ -5,19 +5,6 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
-            @if (!Auth::user()->test_finished)
-                <div class="col-md-5 col-sm-7 col-xs-12" style="position: fixed; top: 67px;right: 0;z-index: 2;">
-
-                    <div class="alert alert-info" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        Vemos que no has hecho tu test para obtener contenido personalizado, da click <a href="{{ route('user::test.index', Auth::user()->slug ) }}">aquí</a> y realizalo!
-                    </div>
-
-                </div>
-            @endif
-
             <div class="panel panel-default">
 
                 <div class="panel-heading">Tu cuenta</div>
@@ -28,6 +15,10 @@
                     <strong>Nombre:</strong> <span style="text-transform: capitalize;">{{ Auth::user()->name }}</span><br>
                     <strong>Email: </strong> {{ Auth::user()->email }} <br>
                     <strong>Contraseña:</strong> {{ '*****************' }} <br>
+
+                    <br>
+
+                    <a href="{{ route('user::edit', Auth::user()->slug ) }}">Editar perfil</a>
 
                     <hr>
 
