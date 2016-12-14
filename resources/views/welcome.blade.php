@@ -141,3 +141,14 @@
         @endif
 
 @endsection
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
+    <script type="text/javascript">
+        var $container = $('.masonry-container');
+        $container.masonry({
+            columnWidth: '.item',
+            itemSelector: '.item'
+        });
+    </script>
+@endsection

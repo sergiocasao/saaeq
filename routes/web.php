@@ -47,15 +47,21 @@ Route::group([ 'prefix' => 'cursos', 'as' => 'curse.' ], function(){
             // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos
             Route::get('{theme}', 'Client\Curses\ThemesController@show')->name('show');
 
-            Route::group([ 'prefix' => '{theme}/examen', 'as' => 'exam.' ], function(){
+            Route::group([ 'prefix' => '{theme}', 'as' => '' ], function(){
 
                 // Clases route
                 // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos/exam
-                Route::get('/', 'Client\Curses\ExamController@show')->name('show');
+                Route::get('/examen', 'Client\Curses\ExamController@show')->name('exam.show');
 
-                Route::post('/', 'Client\Curses\ExamController@store')->name('store');
+                Route::post('/examen', 'Client\Curses\ExamController@store')->name('exam.store');
 
+                // Clases route
+                // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos/exam
+                Route::get('/ahorcado', 'Client\Curses\ActivityController@ahorcado')->name('ahorcado.show');
 
+                Route::get('/sopa-de-letras', 'Client\Curses\ActivityController@sopa')->name('activity.show');
+
+                Route::get('activity/message', 'Client\Curses\ActivityController@store')->name('activity.store');
             });
 
         });

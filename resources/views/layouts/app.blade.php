@@ -78,6 +78,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
+                        <img src="http://www.cectijuana.ipn.mx/v2/images/logipn.png" style="max-height: 100%; width: auto;display: inline-block;" alt="">
                         {{ config('app.name', 'Laravel') }}
                     </a>
                 </div>
@@ -138,14 +139,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="/js/app.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
-    <script type="text/javascript">
-        var $container = $('.masonry-container');
-        $container.masonry({
-            columnWidth: '.item',
-            itemSelector: '.item'
-        });
-    </script>
+    @yield('scripts')
 
 </body>
 </html>
