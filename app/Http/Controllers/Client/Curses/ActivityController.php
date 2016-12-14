@@ -50,12 +50,14 @@ class ActivityController extends Controller
 
     public function sopa(Curse $curse, Signature $signature, Theme $theme)
     {
-        $anwers = $theme->exam->questions->load('answers')->random(1)->answers->map(function($item){
+        $question = $theme->exam->questions->load('answers')->random(1);
+
+        $anwers = $question->answers->map(function($item){
             return strtr( $item->answer, $this->unwanted_array );
         })->toArray();
 
         $data = [
-            'question'          => $theme->exam->questions->load('answers')->random(1),
+            'question'          => $question,
             'answers'           => $anwers,
             'theme_slug'        => $theme->slug,
             'signature_slug'    => $signature->slug,
