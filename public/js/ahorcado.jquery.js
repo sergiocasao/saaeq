@@ -62,7 +62,7 @@ var ahorcado = function (url, words){
                 }
             };
             if(ban2){
-                message = 'Felicidades haz ganado :)';
+                message = '¡Felicidades haz ganado!';
                 replat = '<br> Vuelve a jugar, da click <a href="' + window.location +'">aquí</a>. ';
                 alert(message);
                 location.href= url + '?m=' + message + replat;

@@ -33,12 +33,14 @@ class ActivityController extends Controller
      */
     public function ahorcado(Curse $curse, Signature $signature, Theme $theme)
     {
-        $anwers = $theme->exam->questions->load('answers')->random(1)->answers()->correct()->get()->map(function($item){
+        $question = $theme->exam->questions->load('answers')->random(1);
+
+        $anwers = $question->answers()->correct()->get()->map(function($item){
             return strtr( $item->answer, $this->unwanted_array );
         })->toArray();
 
         $data = [
-            'question'          => $theme->exam->questions->load('answers')->random(1),
+            'question'          => $question,
             'answers'           => $anwers,
             'theme_slug'        => $theme->slug,
             'signature_slug'    => $signature->slug,
@@ -52,20 +54,24 @@ class ActivityController extends Controller
     {
         $questions = $theme->exam->questions->load('answers');
 
-        $anwers = $questions[0]->answers()->correct()->get()->map(function($item){
-            return strtr( $item->answer, $this->unwanted_array );
-        })->toArray();
+        // $anwers = $questions->map(function($question){
+        //     return $question->answers()->correct()->get()->map(function($item){
+        //         return strtr( $item->answer, $this->unwanted_array );
+        //     });
+        // });
 
-        $anwers = $theme->exam->questions->load('answers')->map(function($question){
-            return $q->answers->map(function($item){
-                return strtr( $item->answer, $this->unwanted_array );
-            })->toArray();
-        });
+        // $anwers = $questions->map(function($question){
+        //     return $question->answers()->correct()->get()->map(function($item){
+        //         return $item;
+        //     });
+        // });
+
+        $answers = $questions->where('answer.correct', true);
 
         dd($anwers);
 
         $data = [
-            'questions'          => $question,
+            'questions'         => $questions,
             'answers'           => $anwers,
             'theme_slug'        => $theme->slug,
             'signature_slug'    => $signature->slug,
