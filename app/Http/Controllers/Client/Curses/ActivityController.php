@@ -33,7 +33,7 @@ class ActivityController extends Controller
      */
     public function ahorcado(Curse $curse, Signature $signature, Theme $theme)
     {
-        $anwers = $theme->exam->questions->load('answers')->random(1)->answers->map(function($item){
+        $anwers = $theme->exam->questions->load('answers')->random(1)->answers()->correct()->get()->map(function($item){
             return strtr( $item->answer, $this->unwanted_array );
         })->toArray();
 
@@ -50,14 +50,22 @@ class ActivityController extends Controller
 
     public function sopa(Curse $curse, Signature $signature, Theme $theme)
     {
-        $question = $theme->exam->questions->load('answers')->random(1);
+        $questions = $theme->exam->questions->load('answers');
 
-        $anwers = $question->answers->map(function($item){
+        $anwers = $questions[0]->answers()->correct()->get()->map(function($item){
             return strtr( $item->answer, $this->unwanted_array );
         })->toArray();
 
+        $anwers = $theme->exam->questions->load('answers')->map(function($question){
+            return $q->answers->map(function($item){
+                return strtr( $item->answer, $this->unwanted_array );
+            })->toArray();
+        });
+
+        dd($anwers);
+
         $data = [
-            'question'          => $question,
+            'questions'          => $question,
             'answers'           => $anwers,
             'theme_slug'        => $theme->slug,
             'signature_slug'    => $signature->slug,

@@ -5,11 +5,9 @@
 <style type="text/css">
     #sopa table
     {
-        margin-left: 8%;
         border: none;
         border-collapse: collapse;
-        width: 60%;
-
+        width: 100%;
     }
 
     #sopa table td
@@ -38,12 +36,21 @@
 
             <br><br>
 
-            <div class="col-xs-12">
+            <div class="col-xs-12 col-sm-8">
                 <div class="box">
-                    <div id="sopa">
-
-                    </div>
+                    <div id="sopa"></div>
                 </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-4" style="background-color: red;">
+                <strong>1. question 1</strong> <br>
+                <p>Anwers 1</p>
+
+                <strong>1. question 1</strong> <br>
+                <p>Anwers 1</p>
+
+                <strong>1. question 1</strong> <br>
+                <p>Anwers 1</p>
             </div>
 
         </div>
@@ -52,7 +59,7 @@
 @endsection
 
 @section('scripts')
-    <script src="jquery.sopaletras.js" type="text/javascript" language="javascript"></script>
+    <script src="/js/sopaletras.jquery.js" type="text/javascript" language="javascript"></script>
     <script type="text/javascript">
     	$(function(){
     	 var sopaoption = {
