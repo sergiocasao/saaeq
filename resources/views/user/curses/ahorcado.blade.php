@@ -14,6 +14,24 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
+            <br>
+            <div class="col-xs-12 col-md-12" style="margin-bottom: 40px;">
+
+                <div class="col-xs-2">
+                    <a class="btn btn-default " href="{{ route('client::curse.signature.theme.show', ['curse' => $curse_slug, 'signature' => $signature_slug, 'theme' => $theme_slug ]) }}" role="button" style="margin-right: 2em;margin-top: 5px;">< Regresar</a>
+                </div>
+
+                <div class="col-xs-10">
+                    <strong>Instrucciones:</strong>
+                    <p>Da click sobre una letra y si se encuentra en la palabra que búscas se mostrará, de lo contrario obtendrás un error. Solo tienes un máximo de 5 errores antes de que el ahorcado muera.</p>
+                </div>
+
+                <div class="col-xs-10" style="margin-top: 2em;">
+                    <strong>Palabras encontradas: </strong> <span id="found">0</span>/<span id="total">0</span>
+                </div>
+
+            </div>
+
             <br><br>
 
             <div class="col-xs-12 col-sm-6">

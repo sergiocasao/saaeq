@@ -4,7 +4,7 @@
     Sopa = function ($el, options) {
         $t = $("<table border='1'>");
 
-        var defaults = { palabras: [{ name: 'NEWLANDS' }, { name: 'MENDELEIEV' }, { name: 'DOBEREINER' }, { name: 'MEYER' }, { name: 'WEGNER'}, { name: 'LAVOISIER'}, { name: 'DUMAS'}, { name: 'ODLING'}], complejo: 15, vertical: 'S', onWin: "" };
+        var defaults = { palabras: [{ name: 'NEWLANDS' }, { name: 'MENDELEIEV' }, { name: 'DOBEREINER' }, { name: 'MEYER' }, { name: 'WEGNER'}, { name: 'LAVOISIER'}, { name: 'DUMAS'}, { name: 'ODLING'}], complejo: 20, vertical: 'S', onWin: "" };
         var aciertos = 0;
         var activarhover = false;
         var miradorpalabras = "";
@@ -68,6 +68,9 @@
             }
 
             comienzoyar = comienzoyar.sort(function (a, b) { return a - b });
+
+            $('#total').text(defaults.palabras.length);
+
             var totalvertical = defaults.palabras.length / 2;
             if (totalvertical > 2) {
                 totalvertical = totalvertical - 1;
@@ -328,13 +331,16 @@
                                 aciertos += 1;
                             }
                         }
-                        console.log("1+ "+aciertos+" "+defaults.palabras.length);
-                        alert("Encontraste la palabra: " + selecion);
+                        // console.log("1+ "+aciertos+" "+defaults.palabras.length);
+                        // alert("Encontraste la palabra: " + selecion);
+
                         if (!verificar) {
                             miradorpalabras += selecion + ", ";
                             $g.cantidadpalabras();
                         }
+
                         $("td[class='']").addClass("noborrar");
+
                         if (aciertos == defaults.palabras.length) {
                             console.log(aciertos+" "+defaults.palabras.length);
                             alert("Felicitaciones!!!. Has encontrado todas las palabras.");
@@ -393,7 +399,12 @@
 
         this.enabled = function () { dejapasar = true; }
 
-        this.cantidadpalabras = function () { eval("nogano('" + aciertos + "')"); eval("noganopalabras('" + miradorpalabras + "')"); }
+        this.cantidadpalabras = function () {
+            console.log('Aciertos:' + aciertos);
+            $('#found').text(aciertos);
+            // eval("nogano('" + aciertos + "')");
+            // eval("noganopalabras('" + miradorpalabras + "')");
+        }
 
         this.init();
     };

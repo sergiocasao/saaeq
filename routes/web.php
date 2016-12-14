@@ -59,7 +59,7 @@ Route::group([ 'prefix' => 'cursos', 'as' => 'curse.' ], function(){
                 // http://www.saaeq.dev/cursos/quimica/tabla-periodica/elementos/exam
                 Route::get('/ahorcado', 'Client\Curses\ActivityController@ahorcado')->name('ahorcado.show');
 
-                Route::get('/sopa-de-letras', 'Client\Curses\ActivityController@sopa')->name('activity.show');
+                Route::get('/sopa-de-letras', 'Client\Curses\ActivityController@sopa')->name('sopa.show');
 
                 Route::get('activity/message', 'Client\Curses\ActivityController@store')->name('activity.store');
             });

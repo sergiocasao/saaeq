@@ -23,7 +23,7 @@ class ActivityController extends Controller
         'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O', 'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U',
         'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss', 'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c',
         'è'=>'e', 'é'=>'e', 'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o', 'ô'=>'o', 'õ'=>'o',
-        'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y'
+        'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'þ'=>'b', 'ÿ'=>'y', ' '=> ''
     ];
 
     /**
@@ -33,15 +33,17 @@ class ActivityController extends Controller
      */
     public function ahorcado(Curse $curse, Signature $signature, Theme $theme)
     {
-        $question = $theme->exam->questions->load('answers')->random(1);
+        $question = $theme->exam->questions->load(['answers' => function($query){
+            $query->where('correct', true);
+        }])->random(1);
 
-        $anwers = $question->answers()->correct()->get()->map(function($item){
+        $answers = $question->answers()->correct()->get()->map(function($item){
             return strtr( $item->answer, $this->unwanted_array );
         })->toArray();
 
         $data = [
             'question'          => $question,
-            'answers'           => $anwers,
+            'answers'           => $answers,
             'theme_slug'        => $theme->slug,
             'signature_slug'    => $signature->slug,
             'curse_slug'        => $curse->slug,
@@ -52,27 +54,19 @@ class ActivityController extends Controller
 
     public function sopa(Curse $curse, Signature $signature, Theme $theme)
     {
-        $questions = $theme->exam->questions->load('answers');
+        $questions = $theme->exam->questions->load(['answers' => function($query){
+            $query->where('correct', true);
+        }])->random(3);
 
-        // $anwers = $questions->map(function($question){
-        //     return $question->answers()->correct()->get()->map(function($item){
-        //         return strtr( $item->answer, $this->unwanted_array );
-        //     });
-        // });
-
-        // $anwers = $questions->map(function($question){
-        //     return $question->answers()->correct()->get()->map(function($item){
-        //         return $item;
-        //     });
-        // });
-
-        $answers = $questions->where('answer.correct', true);
-
-        dd($anwers);
+        $answers = $questions->map(function($question){
+            return [ 'name' => $question->answers()->correct()->get()->map(function($item){
+                return strtoupper(strtr( $item->answer, $this->unwanted_array ));
+            })->first()];
+        })->toArray();
 
         $data = [
             'questions'         => $questions,
-            'answers'           => $anwers,
+            'answers'           => $answers,
             'theme_slug'        => $theme->slug,
             'signature_slug'    => $signature->slug,
             'curse_slug'        => $curse->slug,

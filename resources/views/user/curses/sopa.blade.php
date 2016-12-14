@@ -30,28 +30,43 @@
         <div class="col-md-10 col-md-offset-1">
 
             <br>
+            <div class="col-xs-12 col-md-12" style="margin-bottom: 40px;">
 
-            <strong>Instrucciones:</strong>
-            <p>Da click sobre la primera letra de la palabra y click nuevamente en la letra final para seleccionarla.</p>
+                <div class="col-xs-2">
+                    <a class="btn btn-default " href="{{ route('client::curse.signature.theme.show', ['curse' => $curse_slug, 'signature' => $signature_slug, 'theme' => $theme_slug ]) }}" role="button" style="margin-right: 2em;margin-top: 5px;">< Regresar</a>
+                </div>
+
+                <div class="col-xs-10">
+                    <strong>Instrucciones:</strong>
+                    <p>Da click sobre la primera letra de la palabra y click nuevamente en la letra final para seleccionarla.</p>
+                </div>
+
+                <div class="col-xs-10" style="margin-top: 2em;">
+                    <strong>Palabras encontradas: </strong> <span id="found">0</span>/<span id="total">0</span>
+                </div>
+
+            </div>
 
             <br><br>
 
-            <div class="col-xs-12 col-sm-8">
+            <div class="col-xs-12 col-md-8" style="margin-bottom: 70px;">
                 <div class="box">
                     <div id="sopa"></div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-4" style="background-color: red;">
-                <strong>1. question 1</strong> <br>
-                <p>Anwers 1</p>
-
-                <strong>1. question 1</strong> <br>
-                <p>Anwers 1</p>
-
-                <strong>1. question 1</strong> <br>
-                <p>Anwers 1</p>
+            <div class="col-xs-12 col-md-4">
+                @foreach ($questions as $question)
+                    <strong>{{ $question->question }}</strong> <br>
+                    @foreach ($question->answers as $answer)
+                        {{ $answer->answer }}
+                        <p>Letras iniciales: {{ $answer->answer[0] }}{{ $answer->answer[1] }}</p>
+                    @endforeach
+                    <br>
+                @endforeach
             </div>
+
+
 
         </div>
     </div>
@@ -63,6 +78,7 @@
     <script type="text/javascript">
     	$(function(){
     	 var sopaoption = {
+                        palabras: {!! json_encode(array_values($answers)) !!},
                         vertical: 'S',
                         onWin: "mostrarTodo"
                     };
