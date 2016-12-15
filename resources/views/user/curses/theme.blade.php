@@ -20,7 +20,7 @@
 
 
             @if ( $content->video )
-            <video class="" id="myVideo" preload style="width: 100%;" controls>
+                <video class="" id="myVideo" preload style="width: 100%;" controls>
                     <source src="{{ $content->video }}"  type="video/mp4">
                     {{--
                     @if ( $content->video['mp4']  ) { <source src="{{ $content->video['mp4'] }}"  type="video/mp4"> @endif
@@ -32,11 +32,11 @@
                 <source src="{{ asset('videos/Ultimo_Export_Color.ogg') }}"  type="video/ogg">
                 <source src="{{ asset('videos/Ultimo_Export_Color.webm')}}"  type="video/webm">
                 --}}
-            </video>
-            <script type="text/javascript">
-            var vid = document.getElementById("myVideo");
-            vid.volume = 0.2;
-            </script>
+                </video>
+                <script type="text/javascript">
+                var vid = document.getElementById("myVideo");
+                vid.volume = 0.2;
+                </script>
             @endif
 
             <br>
@@ -74,6 +74,7 @@
 
             <br><br>
 
+
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
 
@@ -106,21 +107,27 @@
                     </div>
                 </div>
 
-                @if (Auth::user()->exams()->where('theme_id', $theme->id )->take(10)->get()->count() > 0)
 
-                    <div id="graph"></div>
 
-                @else
+                @if (Auth::user()->exams->count() > 0)
 
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
 
-                            No haz realizado ningun cuestionario para este tema. <br>
-                            Haz click <a href="{{ route('client::curse.signature.theme.exam.show', [ 'curse' => $curse_slug, 'signature' => $signature_slug, 'theme' => $theme->slug ]) }}" role="button">aquí</a> para realizar el cuestionario. <br><br><br>
+                    @if (Auth::user()->exams()->where('theme_id', $theme->id )->take(10)->get()->count() > 0)
 
+                        <div id="graph"></div>
+
+                    @else
+
+                        <div class="row">
+                            <div class="col-md-10 col-md-offset-1">
+
+                                No haz realizado ningun cuestionario para este tema. <br>
+                                Haz click <a href="{{ route('client::curse.signature.theme.exam.show', [ 'curse' => $curse_slug, 'signature' => $signature_slug, 'theme' => $theme->slug ]) }}" role="button">aquí</a> para realizar el cuestionario. <br><br><br>
+
+                            </div>
                         </div>
-                    </div>
 
+                    @endif
 
                 @endif
 
@@ -163,29 +170,30 @@
 
             @endif
 
-
         </div>
     </div>
 </div>
 @endsection
 
 @section('scripts')
-    @if (Auth::user()->exams()->where('theme_id', $theme->id )->take(10)->get()->count() > 0)
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
-        <script src="/js/morris.js"></script>
-        <script type="text/javascript">
-            Morris.Line({
-                element: 'graph',
-                data: [
-                    @foreach (Auth::user()->exams()->where('theme_id', $theme->id )->take(10)->get() as $exam)
-                    { date: '{{ $exam->pivot->created_at }}', qualification: {{ $exam->pivot->qualification }} },
-                    @endforeach
-                ],
-                xkey: 'date',
-                ykeys: ['qualification'],
-                labels: ['Calificación'],
-            });
-        </script>
+    @if (Auth::check() && Auth::user()->exams->count() > 0)
+        @if (Auth::user()->exams()->where('theme_id', $theme->id )->take(10)->get()->count() > 0)
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.min.js"></script>
+            <script src="/js/morris.js"></script>
+            <script type="text/javascript">
+                Morris.Line({
+                    element: 'graph',
+                    data: [
+                        @foreach (Auth::user()->exams()->where('theme_id', $theme->id )->take(10)->get() as $exam)
+                        { date: '{{ $exam->pivot->created_at }}', qualification: {{ $exam->pivot->qualification }} },
+                        @endforeach
+                    ],
+                    xkey: 'date',
+                    ykeys: ['qualification'],
+                    labels: ['Calificación'],
+                });
+            </script>
+        @endif
     @endif
 @endsection

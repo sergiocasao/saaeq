@@ -105,7 +105,7 @@ class ContentSet extends CltvoSet
                 'comprenhention_learn_type_id'  => App\LearnType::slug('global')->get()->first()->id,
                 'theme_id'                      => Theme::getObjectBySlug('historia-de-la-tabla-periodica')->id,
                 'video'                         => Content::getVideo('historia-de-la-tabla-periodica','antecedentes-de-la-tabla-periodica' ),
-                'default'                       => 0,
+                'default'                       => 1,
                 'content'                       => '',
             ],
             [
@@ -165,7 +165,7 @@ class ContentSet extends CltvoSet
                 'comprenhention_learn_type_id'  => App\LearnType::slug('global')->get()->first()->id,
                 'theme_id'                      => Theme::getObjectBySlug('historia-de-la-tabla-periodica')->id,
                 'video'                         => null,
-                'default'                       => 1,
+                'default'                       => 0,
                 'content'                       => '
                     <h1>Historia de la tabla periódica</h1>
             		<p>Desde la antigüedad, los hombres se han preguntado de qué están hechas las cosas. El primero del que tenemos noticias fue un pensador griego, Tales de Mileto, quien en el siglo VII antes de Cristo, afirmó que todo estaba constituido a partir de agua, que enrareciéndose o solidificándose formaba todas las sustancias conocidas. Con posterioridad, otros pensadores griegos supusieron que la sustancia primigenia era otra. Así, Anaxímenes, en al siglo VI a. C. creía que era el aire y Heráclito el fuego.</p>
