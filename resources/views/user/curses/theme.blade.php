@@ -42,7 +42,7 @@
             <br>
 
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
 
                     {!! $content->content or '' !!}
 
@@ -50,7 +50,7 @@
             </div>
 
             <div class="row" style="margin-top: -20px;">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
 
                     <div class="page-header">
                         <h3>Actividades</h3>
@@ -76,7 +76,7 @@
 
 
             <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+                <div class="col-md-12">
 
                     <div class="page-header">
                         <h3>Cuestionario</h3>
@@ -98,7 +98,7 @@
             @if (Auth::check())
 
                 <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
+                    <div class="col-md-12">
 
                         <div class="page-header">
                             <h3>Tu historial</h3>
@@ -116,18 +116,18 @@
 
                         <div id="graph"></div>
 
-                    @else
-
-                        <div class="row">
-                            <div class="col-md-10 col-md-offset-1">
-
-                                No haz realizado ningun cuestionario para este tema. <br>
-                                Haz click <a href="{{ route('client::curse.signature.theme.exam.show', [ 'curse' => $curse_slug, 'signature' => $signature_slug, 'theme' => $theme->slug ]) }}" role="button">aquí</a> para realizar el cuestionario. <br><br><br>
-
-                            </div>
-                        </div>
-
                     @endif
+
+                @else
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            No haz realizado ningun cuestionario para este tema. <br>
+                            Haz click <a href="{{ route('client::curse.signature.theme.exam.show', [ 'curse' => $curse_slug, 'signature' => $signature_slug, 'theme' => $theme->slug ]) }}" role="button">aquí</a> para realizar el cuestionario. <br><br><br>
+
+                        </div>
+                    </div>
 
                 @endif
 
