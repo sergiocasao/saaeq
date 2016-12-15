@@ -296,6 +296,17 @@ class ContentSet extends CltvoSet
                 'default'                       => 0,
                 'content'                       => $tabla3D,
             ],
+            //  bloques-y-periodos-de-la-tabla-periodica
+            [
+                'processing_learn_type_id'      => null,
+                'representation_learn_type_id'  => App\LearnType::slug('verbal')->get()->first()->id,
+                'perception_learn_type_id'      => null,
+                'comprenhention_learn_type_id'  => null,
+                'theme_id'                      => Theme::getObjectBySlug('bloques-y-periodos-de-la-tabla-periodica')->id,
+                'video'                         => Content::getVideo('bloques-y-periodos-de-la-tabla-periodica','grupo-2' ),
+                'default'                       => 1,
+                'content'                       => '',
+            ],
             // Elemnetos de la tabla periodica
             [
                 'processing_learn_type_id'      => null,
