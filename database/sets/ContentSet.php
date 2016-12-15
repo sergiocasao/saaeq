@@ -226,16 +226,16 @@ class ContentSet extends CltvoSet
                 'content'                       => '',
             ],
             // Regularidades
-            // [
-            //     'processing_learn_type_id'      => null,
-            //     'representation_learn_type_id'  => App\LearnType::slug('visual')->get()->first()->id,
-            //     'perception_learn_type_id'      => null,
-            //     'comprenhention_learn_type_id'  => App\LearnType::slug('global')->get()->first()->id,
-            //     'theme_id'                      => Theme::getObjectBySlug('regularidades-de-la-tabla-periodica')->id,
-            //     'video'                         => Content::getVideo('regularidades-de-la-tabla-periodica','partes-de-la-tabla-periodica' ),
-            //     'default'                       => 0,
-            //     'content'                       => '',
-            // ],
+            [
+                'processing_learn_type_id'      => null,
+                'representation_learn_type_id'  => App\LearnType::slug('visual')->get()->first()->id,
+                'perception_learn_type_id'      => null,
+                'comprenhention_learn_type_id'  => App\LearnType::slug('global')->get()->first()->id,
+                'theme_id'                      => Theme::getObjectBySlug('regularidades-de-la-tabla-periodica')->id,
+                'video'                         => Content::getVideo('regularidades-de-la-tabla-periodica','partes-de-la-tabla-periodica' ),
+                'default'                       => 0,
+                'content'                       => '',
+            ],
             [
                 'processing_learn_type_id'      => App\LearnType::slug('activo')->get()->first()->id,
                 'representation_learn_type_id'  => App\LearnType::slug('visual')->get()->first()->id,

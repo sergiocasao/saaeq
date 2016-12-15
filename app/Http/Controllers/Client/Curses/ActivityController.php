@@ -60,7 +60,7 @@ class ActivityController extends Controller
 
         $answers = $questions->map(function($question){
             return [ 'name' => $question->answers()->correct()->get()->map(function($item){
-                return strtoupper(strstr(strtr( $item->answer, $this->unwanted_array ), [' '=> ''] ));
+                return strtoupper(strtr(strtr( $item->answer, $this->unwanted_array ), [' '=> ''] ));
             })->first()];
         })->toArray();
 

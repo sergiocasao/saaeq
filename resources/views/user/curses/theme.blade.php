@@ -18,8 +18,7 @@
 
             <br><br><br>
 
-
-            @if ( $content->video )
+            @if ( isset($content->video) )
                 <video class="" id="myVideo" preload style="width: 100%;" controls>
                     <source src="{{ $content->video }}"  type="video/mp4">
                     {{--
@@ -39,12 +38,13 @@
                 </script>
             @endif
 
+
             <br>
 
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
 
-                    {!! $content->content !!}
+                    {!! $content->content or '' !!}
 
                 </div>
             </div>

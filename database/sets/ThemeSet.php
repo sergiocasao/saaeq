@@ -51,13 +51,13 @@ class ThemeSet extends CltvoSet
                 "signature_id"  => (Signature::getObjectBySlug('tabla-periodica'))->id,
                 "photo"         => 'http://previews.123rf.com/images/eyematrix/eyematrix1401/eyematrix140100013/25471335-Periodic-table-of-the-elements-Background-illustration-Stock-Vector.jpg',
             ],
-            [
-                "label"         => "Bloques y periodos de la tabla periódica",
-                "slug"          => "bloques-y-periodos-de-la-tabla-periodica",
-                "description"   => "Aprende sobre el número de niveles energéticos de los elemntos identificando su periodo.",
-                "signature_id"  => (Signature::getObjectBySlug('tabla-periodica'))->id,
-                "photo"         => 'https://i.ytimg.com/vi/3I3hoC4lOPM/maxresdefault.jpg',
-            ],
+            // [
+            //     "label"         => "Bloques y periodos de la tabla periódica",
+            //     "slug"          => "bloques-y-periodos-de-la-tabla-periodica",
+            //     "description"   => "Aprende sobre el número de niveles energéticos de los elemntos identificando su periodo.",
+            //     "signature_id"  => (Signature::getObjectBySlug('tabla-periodica'))->id,
+            //     "photo"         => 'https://i.ytimg.com/vi/3I3hoC4lOPM/maxresdefault.jpg',
+            // ],
             [
                 "label"         => "Importancia de los elementos químicos en los seres vivos",
                 "slug"          => "importancia-de-los-elementos-quimicos-en-los-seres-vivos",
