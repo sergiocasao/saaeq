@@ -72,6 +72,13 @@ class Content extends Model
         return $file;
     }
 
+    public static function getVideo($theme_slug, $video_slug)
+    {
+        $file = 'http://'.env('URL_SITE').'/videos/'.$theme_slug.'/'.$video_slug.'.mp4';
+
+        return $file;
+    }
+
     public function scopeLearnTypeId($query, $type, $id)
     {
         return $query->where($type, $id);

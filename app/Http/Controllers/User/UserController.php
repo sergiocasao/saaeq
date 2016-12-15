@@ -10,9 +10,13 @@ use App\User;
 
 use App\Http\Requests\Users\UpdateEmailRequest;
 use App\Http\Requests\Users\UpdatePasswordRequest;
+use App\Http\Requests\Users\DeleteAccountRequest;
 
 use App\Notifications\Users\UpdatePasswordNotification;
 use App\Notifications\Users\UpdateMailNotification;
+use App\Notifications\Users\DeleteAccountNotification;
+
+use App\Curse;
 
 class UserController extends Controller
 {
@@ -28,6 +32,10 @@ class UserController extends Controller
 
     public function index()
     {
+        $data = [
+            'theme'
+        ];
+
         return view('user.home');
     }
 
@@ -67,5 +75,20 @@ class UserController extends Controller
         Auth::user()->notify( new UpdatePasswordNotification);
 
         return redirect()->route('user::index', Auth::user()->slug )->with('status', "La contraseña fue correctamente actualizada");
+    }
+
+    public function deleteAccount(DeleteAccountRequest $request, User $user)
+    {
+        Auth::user()->active = false;
+
+        if (!Auth::user()->save()) {
+            return Redirect::back()->withErrors(["No pudimos desactivar tu cuenta."]);
+        }
+
+        Auth::user()->notify( new DeleteAccountNotification);
+
+        Auth::logout();
+
+        return redirect()->route('client::index')->with('status', "Tu cuenta ha sido desactivada exitosamente, para volver a activarla inicia sesión como siempre.");
     }
 }

@@ -32,25 +32,21 @@ class AnswersTBElSet extends CltvoSet
             /** Historia tabla periodica */
             // 1
                 [
-                    "answer"            => "Plomo, Titanio, Selenio, Niquel, Hierro, Manganeso y Niquel.",
+                    "answer"            => "Manganeso y Niquel.",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 1)->id,
                     "correct"           => false,
                 ],
                 [
-                    "answer"            => "Oro, Plata, Cobre, Hierro, Plomo, Estaño y Mercurio.",
+                    "answer"            => "Oro y Plata",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 1)->id,
                     "correct"           => true,
                 ],
                 [
-                    "answer"            => "Zinc, Tecnecio, Estaño, Radio, Actinio, Potasio, Plomo.",
+                    "answer"            => "Zinc y Tecnecio",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 1)->id,
                     "correct"           => false,
                 ],
-                [
-                    "answer"            => "Cobre, Erbio, Tulio, Osmio, Polonio, Germanio, Platimio.",
-                    "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 1)->id,
-                    "correct"           => false,
-                ],
+
             [
                 "answer"            => "60%",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 2)->id,
@@ -92,22 +88,22 @@ class AnswersTBElSet extends CltvoSet
                     "correct"           => false,
                 ],
             [
-                "answer"            => "Cloro, Mercurio, Neón",
+                "answer"            => "Cloro y Mercurio",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 4)->id,
                 "correct"           => false,
             ],
             [
-                "answer"            => "Hidrógeno, Oxígeno y Nitrógeno",
+                "answer"            => "Hidrógeno y Oxígeno",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 4)->id,
                 "correct"           => true,
             ],
             [
-                "answer"            => "Hierro, Estaño, Mercurio",
+                "answer"            => "Hierro y Estaño",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 4)->id,
                 "correct"           => false,
             ],
             [
-                "answer"            => "Manganeso, Oro, Plata",
+                "answer"            => "Manganeso y Oro",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 4)->id,
                 "correct"           => false,
             ],
@@ -162,12 +158,12 @@ class AnswersTBElSet extends CltvoSet
                     "correct"           => false,
                 ],
             [
-                "answer"            => "Titanio, Circonio, Hafnio, Rutherfordio",
+                "answer"            => "Titanio y Circonio",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 8)->id,
                 "correct"           => false,
             ],
             [
-                "answer"            => "Boro, Silicio, Germanio, Arsénico, Antimonio, Telurio y Polonio.	",
+                "answer"            => "Boro y Polonio.	",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 8)->id,
                 "correct"           => true,
             ],
@@ -192,22 +188,18 @@ class AnswersTBElSet extends CltvoSet
                     "correct"           => true,
                 ],
             [
-                "answer"            => "Rubidio, Francio, Estaño, Cromo, Magnesio",
+                "answer"            => "Rubidio y Francio",
+                "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 10)->id,
+                "correct"           => false,
+            ],
+
+            [
+                "answer"            => "Escandio y Lantano",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 10)->id,
                 "correct"           => false,
             ],
             [
-                "answer"            => "Litio, Sodio, Potasio, Rubidio, Cesio",
-                "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 10)->id,
-                "correct"           => false,
-            ],
-            [
-                "answer"            => "Escandio, Itrio, Lantano, Escandio",
-                "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 10)->id,
-                "correct"           => false,
-            ],
-            [
-                "answer"            => "Helio, Neón, Argón, Kriptón, Xenón y Radón",
+                "answer"            => "Helio y Neón",
                 "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 10)->id,
                 "correct"           => true,
             ],
@@ -217,17 +209,17 @@ class AnswersTBElSet extends CltvoSet
                     "correct"           => false,
                 ],
                 [
-                    "answer"            => "Oro, Plata, Hierro",
+                    "answer"            => "Oro y Hierro",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 11)->id,
                     "correct"           => true,
                 ],
                 [
-                    "answer"            => "Calcio, Carbono, Fósforo",
+                    "answer"            => "Carbono y Fósforo",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 11)->id,
                     "correct"           => false,
                 ],
                 [
-                    "answer"            => "Argón, Estaño, Rutherfordio",
+                    "answer"            => "Argón y Rutherfordio",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 11)->id,
                     "correct"           => false,
                 ],
@@ -257,17 +249,17 @@ class AnswersTBElSet extends CltvoSet
                     "correct"           => false,
                 ],
                 [
-                    "answer"            => "Uranio,  Radio, Torio.",
+                    "answer"            => "Uranio y  Radio",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 13)->id,
                     "correct"           => true,
                 ],
                 [
-                    "answer"            => "Polonio, Volframio, Arsenico",
+                    "answer"            => "Polonio y Volframio",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 13)->id,
                     "correct"           => false,
                 ],
                 [
-                    "answer"            => "Zinc, Hierro, Potasio, ",
+                    "answer"            => "Zinc y Hierro ",
                     "question_id"       => Theme::getQuestion('elementos-de-la-tabla-periodica', 13)->id,
                     "correct"           => false,
                 ],

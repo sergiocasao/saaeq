@@ -27,13 +27,14 @@ class Theme extends Model
      * @var array
      */
     protected $fillable = [
-        'label','slug','description','signature_id'
+        'label','slug','description','signature_id','photo'
     ];
 
     protected $casts = [
         'label'         => 'string',
         'slug'          => 'string',
         'description'   => 'string',
+        'photo'         => 'string',
         'signature_id'  => 'integer',
     ];
 

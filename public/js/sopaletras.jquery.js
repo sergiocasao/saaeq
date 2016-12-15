@@ -4,7 +4,7 @@
     Sopa = function ($el, options) {
         $t = $("<table border='1'>");
 
-        var defaults = { palabras: [{ name: 'NEWLANDS' }, { name: 'MENDELEIEV' }, { name: 'DOBEREINER' }, { name: 'MEYER' }, { name: 'WEGNER'}, { name: 'LAVOISIER'}, { name: 'DUMAS'}, { name: 'ODLING'}], complejo: 20, vertical: 'S', onWin: "" };
+        var defaults = { palabras: [{ name: 'NEWLANDS' }, { name: 'MENDELEIEV' }, { name: 'DOBEREINER' }, { name: 'MEYER' }, { name: 'WEGNER'}, { name: 'LAVOISIER'}, { name: 'DUMAS'}, { name: 'ODLING'}], complejo: 15, vertical: 'S', onWin: "" };
         var aciertos = 0;
         var activarhover = false;
         var miradorpalabras = "";

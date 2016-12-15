@@ -20,6 +20,7 @@ Route::group([ 'prefix' => '{user}' ], function(){
     Route::get('editar-perfil', 'User\UserController@edit')->name('edit');
     Route::patch('editar-perfil', 'User\UserController@updateEmail')->name('email.update');
     Route::patch('editar-perfil/password', 'User\UserController@updatePassword')->name('password.update');
+    Route::patch('editar-perfil/delete', 'User\UserController@deleteAccount')->name('profile.delete');
 
     Route::group([ 'prefix' => 'test', 'as' => 'test.' ], function(){
 

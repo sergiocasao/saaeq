@@ -35,6 +35,7 @@ class QuestionsSet extends CltvoSet
         $imp_tb_id      = Theme::getObjectBySlug('importancia-de-los-elementos-quimicos-en-los-seres-vivos')->exam->id;
 
         return [
+            //historia de la tabla
             // 1
             [
                 "question"          => "¿Quién propuso el arreglo de las tríadas?",
@@ -103,11 +104,11 @@ class QuestionsSet extends CltvoSet
                 "order"             => 2,
             ],
             // 3
-            [
-                "question"          => "¿Qué es la tabla periódica?",
-                "exam_id"           => $tb_y_uso_id,
-                "order"             => 3,
-            ],
+            // [
+            //     "question"          => "¿Qué es la tabla periódica?",
+            //     "exam_id"           => $tb_y_uso_id,
+            //     "order"             => 3,
+            // ],
             // 4
             [
                 "question"          => "Establece que las propiedades de los elementos químicos son función periódica de su número atómico",
@@ -122,19 +123,19 @@ class QuestionsSet extends CltvoSet
             ],
             // 6
             [
-                "question"          => "Son tres categorías en las que se clasifican a los elementos:",
+                "question"          => "Es una categoria en las que se clasifica a los elementos:",
                 "exam_id"           => $tb_y_uso_id,
                 "order"             => 6,
             ],
             // 7
-            [
-                "question"          => "¿En la tabla actual como se encuentran ordenados los elementos?",
-                "exam_id"           => $tb_y_uso_id,
-                "order"             => 7,
-            ],
+            // [
+            //     "question"          => "¿En la tabla actual como se encuentran ordenados los elementos?",
+            //     "exam_id"           => $tb_y_uso_id,
+            //     "order"             => 7,
+            // ],
             // 8
             [
-                "question"          => "¿En la tabla periódica que muestra  cada elemento?",
+                "question"          => "¿En la tabla periódica que puede propiedad puede mostrar un elemento?",
                 "exam_id"           => $tb_y_uso_id,
                 "order"             => 8,
             ],
@@ -194,11 +195,11 @@ class QuestionsSet extends CltvoSet
                 "order"             => 5,
             ],
             // 6
-            [
-                "question"          => "¿Qué afirmación es correcta?",
-                "exam_id"           => $reg_tb_id,
-                "order"             => 6,
-            ],
+            // [
+            //     "question"          => "¿Qué afirmación es correcta?",
+            //     "exam_id"           => $reg_tb_id,
+            //     "order"             => 6,
+            // ],
             // 7
             [
                 "question"          => "¿Quién descubrió el hidrogeno?",
@@ -214,7 +215,7 @@ class QuestionsSet extends CltvoSet
             /** Elementos de la tabla periodica **/
             // 1
             [
-                "question"          => "¿Cuáles fueron los primeros elementos de los que se tiene noticia? son los siete metales de la Antigüedad",
+                "question"          => "¿Cuáles fueron los algunos de los elementos de los que se tiene noticia? son los metales de la Antigüedad",
                 "exam_id"           => $el_tb_id,
                 "order"             => 1,
             ],
@@ -256,7 +257,7 @@ class QuestionsSet extends CltvoSet
             ],
             // 8
             [
-                "question"          => "¿Cuáles son los elementos denominados metaloides?",
+                "question"          => "¿Cuáles algunos de los elementos denominados metaloides?",
                 "exam_id"           => $el_tb_id,
                 "order"             => 8,
             ],
@@ -268,7 +269,7 @@ class QuestionsSet extends CltvoSet
             ],
             // 10
             [
-                "question"          => "¿Cuáles son los elementos conocidos como gases inertes?",
+                "question"          => "¿Cuáles son algunos de los elementos conocidos como gases inertes?",
                 "exam_id"           => $el_tb_id,
                 "order"             => 10,
             ],

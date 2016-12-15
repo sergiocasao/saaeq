@@ -29,7 +29,7 @@ class AnswersTBRegSet extends CltvoSet
     protected function CltvoGetItems(){
 
         return [
-            /** Historia tabla periodica */
+            /** regularidades-de-la-tabla-periodica */
             // 1
                 [
                     "answer"            => "Tabla períodica",
@@ -111,26 +111,26 @@ class AnswersTBRegSet extends CltvoSet
                     "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 5)->id,
                     "correct"           => false,
                 ],
-            [
-                "answer"            => "Los gases nobles tienen configuración electrónica estaable",
-                "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
-                "correct"           => true,
-            ],
-            [
-                "answer"            => "El flúor es elemento menos electronegativo",
-                "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
-                "correct"           => false,
-            ],
-            [
-                "answer"            => "Newlands enunció las triadas de los elementos",
-                "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
-                "correct"           => false,
-            ],
-            [
-                "answer"            => "Mendeleiev clasificó los elementos en orden creciente de su número atómico",
-                "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
-                "correct"           => false,
-            ],
+            // [
+            //     "answer"            => "Los gases nobles tienen configuración electrónica estaable",
+            //     "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
+            //     "correct"           => true,
+            // ],
+            // [
+            //     "answer"            => "El flúor es elemento menos electronegativo",
+            //     "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
+            //     "correct"           => false,
+            // ],
+            // [
+            //     "answer"            => "Newlands enunció las triadas de los elementos",
+            //     "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
+            //     "correct"           => false,
+            // ],
+            // [
+            //     "answer"            => "Mendeleiev clasificó los elementos en orden creciente de su número atómico",
+            //     "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 6)->id,
+            //     "correct"           => false,
+            // ],
                 [
                     "answer"            => "Sir Alex Ferguson",
                     "question_id"       => Theme::getQuestion('regularidades-de-la-tabla-periodica', 7)->id,

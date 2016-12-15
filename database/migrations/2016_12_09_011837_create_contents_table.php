@@ -16,14 +16,14 @@ class CreateContentsTable extends Migration
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('processing_learn_type_id');
-            $table->unsignedInteger('perception_learn_type_id');
-            $table->unsignedInteger('representation_learn_type_id');
-            $table->unsignedInteger('comprenhention_learn_type_id');
+            $table->unsignedInteger('processing_learn_type_id')->nullable();
+            $table->unsignedInteger('perception_learn_type_id')->nullable();
+            $table->unsignedInteger('representation_learn_type_id')->nullable();
+            $table->unsignedInteger('comprenhention_learn_type_id')->nullable();
 
             $table->unsignedInteger('theme_id');
 
-            $table->string('video')->default(null);
+            $table->string('video')->nullable();
 
             $table->text('content');
             $table->boolean('default')->default(false);

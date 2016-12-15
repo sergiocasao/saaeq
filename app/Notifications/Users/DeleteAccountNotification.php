@@ -7,27 +7,18 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-use App\Setting;
-
-class ResetPasswordNotification extends Notification
+class DeleteAccountNotification extends Notification
 {
     use Queueable;
-
-    /**
-     * The password reset token.
-     *
-     * @var string
-     */
-    public $token;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct()
     {
-         $this->token = $token;
+        //
     }
 
     /**
@@ -53,11 +44,12 @@ class ResetPasswordNotification extends Notification
         return (new MailMessage)
                     ->from( 'no-reply@saaeq.com', env('APPNOMBRE') )
                     ->success()
-                    ->view('vendor.notifications.email')
-                    ->subject( trans('notifications.ResetPasswordNotification.subject') )
-                    ->greeting( 'Tu contraseña ha sido actualizada' )
-                    ->line( 'Da click en el botón de abajo.' )
-                    ->action( 'Seleccionar contraseña' , route('client::pass_reset_token',[$this->token,"email"=>$notifiable->email]) )
+                    ->subject( 'Hemos dado de baja tu cuenta.' )
+                    ->greeting( 'Hola '.explode(' ', trim($notifiable->name) )[0].', ' )
+                    ->line( 'Hemos desactivado tu cuenta, vuelve pronto. :(' )
+                    ->line( 'Reactiva tu cuenta dando click aquí.' )
+                    ->action( 'Activar cuenta', $notifiable->getMailActivationAcountUrl() )
+                    ->line( 'Para volver a activarla inicia sesión como siempre lo haces.' );
     }
 
     /**

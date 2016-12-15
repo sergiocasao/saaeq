@@ -49,20 +49,21 @@
 
             <br><br>
 
-            <div class="col-xs-12 col-md-8" style="margin-bottom: 70px;">
+            <div class="col-xs-12 col-md-12" style="margin-bottom: 70px;">
                 <div class="box">
                     <div id="sopa"></div>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-4">
+            <div class="col-xs-12 col-md-12">
+                @php $i = 1 @endphp
                 @foreach ($questions as $question)
-                    <strong>{{ $question->question }}</strong> <br>
+                    <strong>{{ $i }}. {{ $question->question }}</strong> <br>
                     @foreach ($question->answers as $answer)
-                        {{ $answer->answer }}
-                        <p>Letras iniciales: {{ $answer->answer[0] }}{{ $answer->answer[1] }}</p>
+                        <p>{{ $answer->answer }}</p>
                     @endforeach
                     <br>
+                    @php $i++; @endphp
                 @endforeach
             </div>
 

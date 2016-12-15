@@ -56,16 +56,16 @@ class AnswersTBUseSet extends CltvoSet
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 2)->id,
                 "correct"           => false,
             ],
-                [
-                    "answer"            => "Es una tabla ordenada aleatoriamente",
-                    "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 3)->id,
-                    "correct"           => false,
-                ],
-                [
-                    "answer"            => "Es una disposición de los elementos químicos en forma de tabla ordenados por su número atómico ",
-                    "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 3)->id,
-                    "correct"           => true,
-                ],
+                // [
+                //     "answer"            => "Es una tabla ordenada aleatoriamente",
+                //     "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 3)->id,
+                //     "correct"           => false,
+                // ],
+                // [
+                //     "answer"            => "Es una disposición de los elementos químicos en forma de tabla ordenados por su número atómico ",
+                //     "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 3)->id,
+                //     "correct"           => true,
+                // ],
             [
                 "answer"            => "La Tabla Periódica",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 4)->id,
@@ -92,7 +92,7 @@ class AnswersTBUseSet extends CltvoSet
                     "correct"           => true,
                 ],
                 [
-                    "answer"            => "Por su punto de ebullición",
+                    "answer"            => "Punto de ebullición",
                     "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 5)->id,
                     "correct"           => false,
                 ],
@@ -102,47 +102,47 @@ class AnswersTBUseSet extends CltvoSet
                     "correct"           => false,
                 ],
             [
-                "answer"            => "Raros, Similares y sintéticos",
+                "answer"            => "Sintéticos",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 6)->id,
                 "correct"           => false,
             ],
             [
-                "answer"            => "Metaloides o de transición, Alcalinos y Halógenos ",
+                "answer"            => "Metaloides ",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 6)->id,
                 "correct"           => true,
             ],
             [
-                "answer"            => "Naturales, De la antigüedad y Sintéticos",
+                "answer"            => "Naturales",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 6)->id,
                 "correct"           => false,
             ],
-                [
-                    "answer"            => "Por su número atómico creciente, en filas y columnas (periodos y grupos)",
-                    "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 7)->id,
-                    "correct"           => true,
-                ],
-                [
-                    "answer"            => "Por su punto de ebullición,  en filas y columnas (periodos y grupos)",
-                    "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 7)->id,
-                    "correct"           => false,
-                ],
-                [
-                    "answer"            => "Por el año de descubrimiento,  en filas y columnas (periodos y grupos)",
-                    "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 7)->id,
-                    "correct"           => false,
-                ],
+                // [
+                //     "answer"            => "Por su número atómico creciente, en filas y columnas (periodos y grupos)",
+                //     "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 7)->id,
+                //     "correct"           => true,
+                // ],
+                // [
+                //     "answer"            => "Por su punto de ebullición,  en filas y columnas (periodos y grupos)",
+                //     "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 7)->id,
+                //     "correct"           => false,
+                // ],
+                // [
+                //     "answer"            => "Por el año de descubrimiento,  en filas y columnas (periodos y grupos)",
+                //     "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 7)->id,
+                //     "correct"           => false,
+                // ],
             [
-                "answer"            => "Símbolo, Descubridor, Año de aparición en la tabla, Valencia y electrones",
+                "answer"            => "Descubridor",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 8)->id,
                 "correct"           => false,
             ],
             [
-                "answer"            => "Numero atómico, Punto de fusión, Punto de ebullición,  Símbolo, Nombre",
+                "answer"            => "Simbolo",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 8)->id,
                 "correct"           => true,
             ],
             [
-                "answer"            => "Nombre, Año de descubrimiento, Descubridor, Masa atómica",
+                "answer"            => "Compuestos",
                 "question_id"       => Theme::getQuestion('tabla-periodica-y-su-uso', 8)->id,
                 "correct"           => false,
             ],

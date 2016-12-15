@@ -114,6 +114,38 @@
 
                         <br>
 
+                        <hr>
+
+                        <br>
+
+                        {!! Form::open([
+                            'method'                => 'PATCH',
+                            'route'                 => ['user::profile.delete',Auth::user()->slug],
+                            'role'                  => 'form' ,
+                            'id'                    => 'delete_account_form',
+                            'class'                 => '',
+                        ]) !!}
+
+                            <div class="form-group">
+                                {!! Form::password('password', [
+                                    'class'         => 'form-control',
+                                    'placeholder'   => 'Contraseña actual',
+                                    'required'      => 'required',
+                                    'form'          => 'delete_account_form'
+                                ]) !!}
+                            </div>
+
+                            <div class="users__submit-container">
+                                {!! Form::submit('Desactiva tu cuenta', [
+                                    'class' => 'btn btn-danger',
+                                    'form'  => 'delete_account_form'
+                                ]) !!}
+                            </div>
+
+                        {!!Form::close()!!}
+
+                        <br>
+
                     </div>
 
                 </div>

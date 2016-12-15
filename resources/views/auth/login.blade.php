@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+
+<div style="padding: 200px 0;background-image: url('http://www.universidad-justosierra.edu.mx/wordpress/wp-content/uploads/2015/07/qu%C3%ADmica-de-los-sentidos.jpg'); color: white;background-size: cover;background-position: center;position: relative;min-height: calc( 100% - 60px );margin-top: -40px;">
+    <div style="height: 100%;width: 100%;background-color: rgba(0,0,0,0.6);position: absolute;top: 0;"></div>
+</div>
+
+<div class="container" style="margin-top: -220px;margin-bottom: 50px;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 

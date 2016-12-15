@@ -19,6 +19,7 @@ class CreateThemesTable extends Migration
             $table->string('slug');
             $table->text('description');
             $table->unsignedInteger('signature_id');
+            $table->string('photo');
             $table->timestamps();
 
             $table  ->foreign('signature_id')
