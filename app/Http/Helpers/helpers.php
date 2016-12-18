@@ -1,4 +1,5 @@
 <?php
+
 /**
  * verifica que si la  futa contiene el string buscado
  * @param  string  $page_slug slug de la pagina a pasar
@@ -17,9 +18,33 @@ function is_page($route_name)
  */
 function cltvoMailEncode($mail)
 {
-    $key = env("CLTVO_ENCRYPTION_KEY=") ? env("CLTVO_ENCRYPTION_KEY=") : '#&$sdfx2s7sffgg4';
-    return base64url_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $mail, MCRYPT_MODE_CBC, md5(md5($key))));
+    return base64url_encode( $mail );
 }
+
+function encrypt_decrypt($action, $string) {
+    $output = false;
+
+    $encrypt_method = "AES-256-CBC";
+    $secret_key = env("CLTVO_ENCRYPTION_KEY=") ? env("CLTVO_ENCRYPTION_KEY=") : '#&$sdfx2s7sffgg4';
+    $secret_iv = env("CLTVO_ENCRYPTION_KEY=") ? env("CLTVO_ENCRYPTION_KEY=") : '#&$sdfx2s7sffgg4';
+
+    // hash
+    $key = hash('sha256', $secret_key);
+
+    // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+    $iv = substr(hash('sha256', $secret_iv), 0, 16);
+
+    if( $action == 'encrypt' ) {
+        $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+        $output = base64_encode($output);
+    }
+    else if( $action == 'decrypt' ){
+        $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+    }
+
+    return $output;
+}
+
 
 
 /**
@@ -29,8 +54,7 @@ function cltvoMailEncode($mail)
  */
 function cltvoMailDecode($encodedMail)
 {
-    $key = env("CLTVO_ENCRYPTION_KEY=") ? env("CLTVO_ENCRYPTION_KEY=") : '#&$sdfx2s7sffgg4';
-    return rtrim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64url_decode($encodedMail), MCRYPT_MODE_CBC, md5(md5($key))), "\0");
+    return rtrim( base64url_decode($encodedMail) , "\0");
 }
 
 function base64url_encode($data) {
